@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JCBilling.com Website Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+<style>
+/* One reading column; colors come from the JCB email signature, same as the home preview. */
+:root{
+ --navy:#102A52; --purple:#7C5CBF; --green:#4AAD48; --teal:#0891B2; --red:#C2410C;
+ --bg:#FBFAFD; --surface:#FFFFFF; --tint-p:#F0EBFF; --tint-g:#EDFAED; --tint-t:#E0F7FA; --tint-r:#FFF1EA;
+ --fg:#1C2433; --muted:#566074; --line:#E4E1EC;
+ --display:'Playfair Display',Georgia,serif;
+ --body:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+ --bg:#0D1422; --surface:#151E30; --tint-p:#241D3A; --tint-g:#15301A; --tint-t:#0F2A33; --tint-r:#3A2216;
+ --fg:#E8ECF4; --muted:#A3AEC2; --line:#2A3448; --purple:#A58BE6; --green:#6CC76A; --teal:#38BDD8; --red:#FB8A5C; color-scheme:dark}}
+:root[data-theme="dark"]{
+ --bg:#0D1422; --surface:#151E30; --tint-p:#241D3A; --tint-g:#15301A; --tint-t:#0F2A33; --tint-r:#3A2216;
+ --fg:#E8ECF4; --muted:#A3AEC2; --line:#2A3448; --purple:#A58BE6; --green:#6CC76A; --teal:#38BDD8; --red:#FB8A5C; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.65;margin:0}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px}
+h1,h2{font-family:var(--display);font-weight:600;line-height:1.2;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.5rem,3vw,1.9rem);margin-bottom:12px}
+h3{font-size:1.02rem;margin:0 0 4px}
+p{margin:0 0 12px}
+a{color:var(--teal)}
+.eyebrow{font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--purple);margin-bottom:6px}
+header.top{background:var(--navy);color:#FFFFFF;padding-block:48px 40px}
+header.top .eyebrow{color:#C9B8F2}
+header.top h1{font-size:clamp(2rem,5vw,2.9rem);margin-block:6px 14px}
+header.top p{color:#C9D2E3;max-width:62ch}
+header.top .meta{font-size:.88rem;color:#94A0B8;margin-top:18px}
+nav.toc{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:3}
+nav.toc .wrap{display:flex;gap:6px 18px;flex-wrap:wrap;padding-block:10px;font-size:.88rem}
+nav.toc a{color:var(--muted);text-decoration:none}
+nav.toc a:hover{color:var(--purple)}
+@media (max-width:720px){nav.toc{position:static}}
+section{padding-block:44px;border-bottom:1px solid var(--line)}
+.lede{font-size:1.06rem;color:var(--muted)}
+.cta{display:inline-block;background:var(--green);color:#FFFFFF;font-weight:600;text-decoration:none;border-radius:999px;padding:12px 22px;margin-top:6px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-top:16px}
+.box.g{background:var(--tint-g);border-color:transparent}
+.box.p{background:var(--tint-p);border-color:transparent}
+ul.clean{margin:0;padding-left:20px;display:grid;gap:6px}
+/* findings */
+.find{display:grid;gap:10px;margin-top:18px}
+.find > div{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:8px;padding:14px 16px;min-width:0}
+.find p{margin:0;color:var(--muted);font-size:.95rem}
+.find .where{display:block;font-size:.82rem;color:var(--muted);margin-top:6px}
+/* tables */
+.tablebox{overflow-x:auto;margin-top:16px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;font-size:.94rem;min-width:520px}
+th,td{padding:11px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+thead th{font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+/* numbered decisions */
+ol.dec{margin:16px 0 0;padding:0;list-style:none;counter-reset:d;display:grid;gap:12px}
+ol.dec li{counter-increment:d;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px 16px 58px;position:relative}
+ol.dec li::before{content:counter(d);position:absolute;left:18px;top:14px;font-family:var(--display);font-size:1.6rem;color:var(--purple);line-height:1}
+ol.dec p{margin:4px 0 0;color:var(--muted);font-size:.95rem}
+ol.dec .rec{color:var(--fg)}
+/* phases */
+.phases{display:grid;gap:14px;margin-top:16px}
+.phase{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.phase .tag{display:inline-block;font-size:.76rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:var(--tint-t);color:var(--teal);border-radius:999px;padding:2px 10px;margin-bottom:8px}
+.phase ul{margin:8px 0 0;padding-left:20px;display:grid;gap:4px;color:var(--muted);font-size:.95rem}
+.who{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.who > div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
+.who ul{margin:6px 0 0;padding-left:18px;font-size:.92rem;color:var(--muted);display:grid;gap:4px}
+@media (max-width:720px){.who{grid-template-columns:1fr}}
+footer{padding-block:32px;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+
+<header class="top">
+ <div class="wrap">
+  <div class="eyebrow">Proposal for review</div>
+  <h1>Improving JCBilling.com</h1>
+  <p>What a clinic owner sees today when they look us up, what I'm proposing to change, and what I need from you and Jennita to get it done.</p>
+  <p class="meta">Prepared by Rayen Ogalde · October 2026 · Every issue below was checked again on the live site on October 12.</p>
+ </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+ <div class="wrap">
+  <a href="#why">Why now</a><a href="#keep">What works</a><a href="#today">What we found</a><a href="#blind">What we can't see</a><a href="#proposal">The proposal</a><a href="#decide">Your decisions</a><a href="#need">What I need</a><a href="#plan">The plan</a>
+ </div>
+</nav>
+
+<main>
+
+<section id="why">
+ <div class="wrap">
+  <div class="eyebrow">Why now</div>
+  <h2>The website is where a clinic decides whether to answer us.</h2>
+  <p>When a clinic owner gets one of our emails, the first thing they do is look us up. Our outreach emails link to the site, and our Google ad sends people straight to it. What they find there either backs up what we told them, or makes them doubt it.</p>
+  <p>Most of them will see it on a phone. From September 22 to October 12, <strong>8 of every 10 clicks on our Google ad came from a phone</strong>.</p>
+  <div class="box p">
+   <p style="margin:0">The good news: the structure, the colors and a lot of the writing are good, and we keep them. What's hurting us are specific, fixable things: small errors that make us look careless, our biggest strengths not being said at all, and a site that never names the specialties we work with.</p>
+  </div>
+ </div>
+</section>
+
+<section id="keep">
+ <div class="wrap">
+  <div class="eyebrow">What works</div>
+  <h2>What we keep</h2>
+  <ul class="clean">
+   <li>The structure of the home page and the color palette.</li>
+   <li>The writing that speaks to the clinic's pain: <em>"Tired of chasing payments?"</em> and <em>"You're not the only one losing sleep over unpaid claims."</em></li>
+   <li><em>"You always get paid first. No hold-ups. No funny business."</em></li>
+   <li><em>"Woman-owned, US-based business."</em></li>
+   <li>Speed. Darrell brought the load time on a phone down from about 5.5 to about 2 seconds.</li>
+  </ul>
+ </div>
+</section>
+
+<section id="today">
+ <div class="wrap">
+  <div class="eyebrow">What we found</div>
+  <h2>What a clinic owner sees today</h2>
+  <p class="lede">None of these is big on its own. Together, they make a company that handles other people's money look careless, and that's the one thing a billing company can't look like.</p>
+
+  <div class="find">
+   <div><h3>Our main advantage isn't said anywhere</h3><p>Nowhere does the site say that we only get paid when the clinic gets paid. The closest line is <em>"we invoice you afterward"</em>, which can be read the opposite way. It's the reason a clinic would choose us over anyone else, and a visitor never reads it.</p><span class="where">Home and both ad pages</span></div>
+   <div><h3>The headline promises numbers we can't back up</h3><p>The first line a visitor reads is <em>"We help therapists get paid up to 50% faster"</em>, and further down the home says our system <em>"saves you hours every week"</em>. We don't have a source for either one. The 97% also appears with two different names a few lines apart: "claim success rate" and "claim approval rate".</p><span class="where">Home and both ad pages</span></div>
+   <div><h3>A Gmail address on our own website</h3><p>The footer shows <em>jcbilling@gmail.com</em>, while the contact form already goes to support@jcbilling.com. A clinic notices a Gmail address right away, and it makes us look like a one-person operation.</p><span class="where">Footer of Home, About, Services and Contact</span></div>
+   <div><h3>The same problem card appears twice</h3><p>"No time to follow up" is shown twice, word for word, in the "Sound familiar?" section.</p><span class="where">Home and both ad pages</span></div>
+   <div><h3>The same testimonial appears twice</h3><p>The testimonial carousel has three spots, and two of them are S. Rhodes. The testimonials are signed only with initials ("Dr. L. M.", "S. Rhodes"), with no clinic name, so they can look made up even though they're real.</p><span class="where">Home and both ad pages</span></div>
+   <div><h3>Small writing errors</h3><p>"money in <strong>you</strong> account" (missing the r) · "Behavioural", the British spelling, on a US site · "Dr. L. M.," with an extra comma · "© Copyright 2025" in every footer.</p><span class="where">Services, Home, ad pages, every footer</span></div>
+   <div><h3>The office address is hidden</h3><p>Our address in Glen Allen only appears in the privacy policy. A real address is one of the strongest signals of a real company, and right now nobody sees it.</p><span class="where">Contact page and footer</span></div>
+   <div><h3>Services is plain text</h3><p>The page that should sell what we do is a list of bullets with no design, next to a home page that looks much more polished. It doesn't say what each service includes or what it costs.</p><span class="where">Services</span></div>
+   <div><h3>Jennita's photos</h3><p>The two photos of Jennita are casual snapshots, surrounded by professional stock photos. That contrast is what makes the company look smaller than it is. A professional portrait would make a big difference for very little cost.</p><span class="where">Home and About</span></div>
+   <div><h3>Layout details</h3><p>On a phone, the light blue and green decorative shape sits on top of the text of the benefit cards. On a computer, the three benefit cards don't line up (the first one is shorter and lower).</p><span class="where">Home, "We've helped therapists…" section</span></div>
+   <div><h3>What Google shows about us</h3><p>No page has a description for Google, so Google picks random text from the page to show under our name. Google is also being told to show the "Sample Page", the three thank-you pages, and an internal page that shouldn't be public. When someone shares our link by email or WhatsApp, no image appears and the home shows up as "Home".</p><span class="where">All pages · site map</span></div>
+   <div><h3>No pricing and no answers to common questions</h3><p>Being clear about pricing before anything is signed is one of the four points you, Jennita and Lissy chose in February. Today the site has no page about pricing and no FAQ, so a clinic has to book a call just to find out how we charge.</p><span class="where">Whole site</span></div>
+   <div><h3>Our social media works against us</h3><p>The Instagram icon, and the X and Pinterest icons, lead to an Instagram page that says <em>"Profile not available"</em>. The Facebook page we link to has 2 followers, no reviews, and its last visible post is from October 2021. It uses an older logo, shows the 804-201-5789 number and jennita.jcb@gmail.com, and says "Always open". A clinic that clicks those icons finds a company that looks inactive.</p><span class="where">Footer and side bar of every page</span></div>
+   <div><h3>The Services page doesn't match the home</h3><p>The home offers credentialing and revenue recovery, but the Services page never mentions them. About, Services and Contact never use the words "therapy", "credentialing" or "recovery".</p><span class="where">Services, About, Contact</span></div>
+   <div><h3>Small things that add up</h3><p>The browser tab of the home only says "JC Billing", and the ad pages say "Landing Search – JC Billing". The error page for a broken link has no button back to the home and no phone. The four service cards on the home look clickable but don't lead anywhere. The WordPress "Sample Page" is still online, with its test text (<em>"I'm a bike messenger by day, aspiring actor by night"</em>).</p><span class="where">Home, ad pages, error page</span></div>
+  </div>
+ </div>
+</section>
+
+<section id="blind">
+ <div class="wrap">
+  <div class="eyebrow">What we can't see</div>
+  <h2>Right now we're working without numbers.</h2>
+  <p><strong>Google Analytics has never been connected</strong>, as Darrell confirmed, and Search Console isn't set up either. That means we don't know how many people visit, where they come from, which pages they read or where they leave. Both depend on Jennita's Google account, the same one used for Google Ads.</p>
+  <p>Here is what Google Ads shows for the "search medical billing" campaign, from September 22 to October 12, 2026 (three weeks):</p>
+  <div class="tablebox">
+   <table>
+    <thead><tr><th>What</th><th>Result</th><th>What it means</th></tr></thead>
+    <tbody>
+     <tr><td>Impressions · clicks</td><td class="num">242 · 11</td><td>Very few people are seeing the ad: about 11 a day, and one click every two days.</td></tr>
+     <tr><td>Cost · cost per click</td><td class="num">$39.90 · $3.63</td><td>Low spend, so it's a good moment to fix things.</td></tr>
+     <tr><td>Clicks from a phone</td><td class="num">82%</td><td>8 of every 10 visitors arrive on a phone, and the ad pages have no phone number to call.</td></tr>
+     <tr><td>Contacts recorded</td><td class="num">0</td><td>Google Ads shows 2 conversion tags unverified and 2 with no recent conversions. We can't tell if the ad brings any calls or forms.</td></tr>
+     <tr><td>Ad quality (Google's rating)</td><td>Poor</td><td>Google marks the campaign "Eligible (limited)": the ad is a weak match for the searches.</td></tr>
+     <tr><td>Keywords we pay for</td><td>General</td><td>"billing companies", "medical and billing", "billing for medical services", "medical billing company". None of them mentions therapy.</td></tr>
+     <tr><td>Searches that triggered the ad</td><td>Many off-target</td><td>Examples: "cpt", "what is medical billing and coding", "check cpt", "superbill for therapy", and other companies' names such as "puremd group" and "revco solutions". We're paying for searches from students and people looking for someone else.</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p>One possible reason for the zero: the site only reports a contact to Google Ads when someone reaches the home's thank-you page (<em>/thank-you-home/</em>). There's nothing set up for the thank-you pages of the two ad pages, and nothing for phone calls. If the form on the ad page leads to its own thank-you page, a clinic that writes to us from the ad is never counted. I still need to confirm where that form leads, which I can check in WordPress.</p>
+  <p style="margin-top:12px;font-size:.9rem;color:var(--muted)">The ad itself says "Over 1,000 Payouts Processed Every Month", which is why decision 3 matters. I haven't changed anything in Google Ads. Every change there is for you and Jennita to decide.</p>
+ </div>
+</section>
+
+<section id="proposal">
+ <div class="wrap">
+  <div class="eyebrow">The proposal</div>
+  <h2>What I'm proposing</h2>
+
+  <h3 style="margin-top:20px">1. A new home page, built on our four commitments</h3>
+  <p>I designed a full preview of the new home. It opens with the one thing nobody else offers, <strong>"We get paid only when you get paid"</strong>, and shows it with a real example: one claim from submission to payment, and the JCB fee at each step.</p>
+  <p>It's organized around the four points you, Jennita and Lissy chose on February 17: our success is tied to yours, pricing explained before committing, follow-through on every claim, and full accountability. The other six differentiators appear in short form, together with a side-by-side of how a traditional billing company handles each situation and how we handle it.</p>
+  <p>The yellow notes in the preview mark every spot where I need a decision or real information from JCB. There's a button at the top to hide them and see the page clean.</p>
+  <a class="cta" href="JCB_Website_Home_Preview.html">Open the home page preview</a>
+
+  <h3 style="margin-top:28px">2. The rest of the site</h3>
+  <div class="tablebox">
+   <table>
+    <thead><tr><th>Page</th><th>Today</th><th>Proposed</th></tr></thead>
+    <tbody>
+     <tr><td><strong>Services</strong></td><td>Plain text with bullets</td><td>One block per service: what's included, how long it takes, what it costs. Same design as the home. It includes everything our kit already lists and the site doesn't: eligibility checks, claim submission, payment posting, denials and appeals, follow-up on unpaid balances, credentialing (including CAQH) and help with documentation.</td></tr>
+     <tr><td><strong>Pricing / Become a partner</strong></td><td>Doesn't exist</td><td>Who we work best with, and the full fee structure: setup, maintenance, billing per paid claim, credentialing, optional services.</td></tr>
+     <tr><td><strong>About</strong></td><td>Short text and a casual photo</td><td>Jennita's story with a professional portrait, the founding year, the team, and her real credentials if she has any.</td></tr>
+     <tr><td><strong>FAQ</strong></td><td>Doesn't exist</td><td>The questions clinics ask on calls: do I have to change my EHR, what happens when a claim is denied, can a new practice afford it, how credentialing works, what happens to claims in progress when they switch from their current biller, what reports they get each month, and whether they get their data back if they leave. Most of the answers are already written in our Objection Reference, so you'd only need to review them, not write them.</td></tr>
+     <tr><td><strong>Contact</strong></td><td>No address, Gmail in the footer</td><td>support@jcbilling.com, phone, office address, and the same form that works today.</td></tr>
+     <tr><td><strong>One page per specialty</strong> (new)</td><td>Doesn't exist. The site never says physical, occupational or speech therapy, or psychology</td><td>Four pages, one per specialty, each with the billing problems typical of that specialty and how we handle them, a testimonial from that specialty, and its own FAQ. See below.</td></tr>
+     <tr><td><strong>Ad pages</strong> (search and video)</td><td>Copies of the home with the same errors</td><td>Corrected, and opening with the ad's own promise. Today the ad says "No Payout Waiting Periods" and "No Surprise Fees", but on a phone those words are far down the page, after many screens.</td></tr>
+    </tbody>
+   </table>
+  </div>
+
+  <h3 style="margin-top:28px">The new About page</h3>
+  <p>Today the About page tells Jennita's story, which is the most valuable part, but it doesn't say who we work with or what makes us different. This is the new text I'm proposing:</p>
+  <div class="box">
+   <p style="font-weight:700;margin-top:0">JC Billing and Management</p>
+   <p>Jennita Coles started JC Billing and Management after years of watching dedicated therapists and healthcare workers struggle to get paid for their work, often while serving the people who need care the most. She had spent years billing for many kinds of providers and every type of insurance, and she knew most of those payments were being lost to denials, missing paperwork and claims nobody followed up on.</p>
+   <p>Today JCB handles billing, credentialing and claim follow-up for physical therapy, occupational therapy, speech therapy and psychology practices. Our work is 100% remote, so we support practices anywhere in the United States. We work with Medicare, Medicaid and private insurers such as BlueCross BlueShield and United Healthcare.</p>
+   <p>Jennita built a team around one idea: the people who care for patients shouldn't have to chase their own payments. That's why we work by four commitments:</p>
+   <ul class="clean">
+    <li><strong>Our success is tied to yours.</strong> We get paid only when you get paid.</li>
+    <li><strong>You understand what you pay before committing.</strong> We explain our pricing upfront, with no surprises.</li>
+    <li><strong>We follow every claim until it's resolved.</strong> Denied claims are corrected and resubmitted, not forgotten.</li>
+    <li><strong>We're accountable for our work.</strong> You always know where your claims stand and who is handling them.</li>
+   </ul>
+   <p style="margin-bottom:0;margin-top:14px">Whether you're opening a new practice or tired of chasing payments, we'd like to hear from you.</p>
+  </div>
+  <p>If you decide to show the team (decision 7), their photos, names and roles would go right below this text.</p>
+
+  <h3 style="margin-top:28px">The specialty pages</h3>
+  <p>Today a therapist searching for billing help in their specialty doesn't find us, because the site never names physical, occupational or speech therapy, or psychology. The companies that rank first have one page per specialty. I'm proposing four.</p>
+  <p>Each page talks only about that specialty: the billing problems those therapists live with, how we solve them, a testimonial from that specialty and its own questions. It doesn't repeat the home page; it only links back to it with one line: "We get paid only when you get paid."</p>
+  <p>I only included problems that our service can solve. Every one comes from Medicare (CMS) or from the professional association of that specialty, checked on October 12, 2026. Some of these rules change every year, so we'd review them each January.</p>
+
+  <div class="box">
+   <p style="font-weight:700;margin-top:0">Physical therapy</p>
+   <ul class="clean">
+    <li><strong>The yearly Medicare threshold.</strong> Once a patient passes it ($2,480 in 2026, shared with speech therapy), every claim needs a special modifier, or Medicare denies it.</li>
+    <li><strong>Billing by the minute.</strong> Timed services are billed in 15-minute units with exact rules. Counting them wrong means getting paid less or having to pay money back.</li>
+    <li><strong>Sessions by an assistant.</strong> They have to be marked on the claim and are paid at 85%. A wrong mark is a billing error.</li>
+   </ul>
+   <p class="note-src" style="margin-bottom:0;font-size:.86rem;color:var(--muted)">Sources: CMS Therapy Services; Medicare Claims Processing Manual, chapter 5.</p>
+  </div>
+
+  <div class="box">
+   <p style="font-weight:700;margin-top:0">Occupational therapy</p>
+   <ul class="clean">
+    <li><strong>Its own yearly Medicare threshold</strong> ($2,480 in 2026). Past it, claims without the modifier are denied.</li>
+    <li><strong>Every line of the claim has to say it's occupational therapy.</strong> If the mark is missing, the claim is rejected.</li>
+    <li><strong>Sessions by an assistant</strong> have to be marked and are paid at 85%.</li>
+   </ul>
+   <p class="note-src" style="margin-bottom:0;font-size:.86rem;color:var(--muted)">Sources: CMS Therapy Services; Medicare Claims Processing Manual, chapter 5.</p>
+  </div>
+
+  <div class="box">
+   <p style="font-weight:700;margin-top:0">Speech therapy</p>
+   <ul class="clean">
+    <li><strong>The main treatment code changes on January 1, 2027.</strong> It's replaced by ten new codes billed by time, and each insurer decides when it adopts them. We update the billing so payments don't stop.</li>
+    <li><strong>The yearly Medicare threshold is shared with physical therapy.</strong> If the patient also had physical therapy that year, it counts toward the same total.</li>
+    <li><strong>Enrolling in Medicare is mandatory</strong> for private practices that see Medicare patients. Our credentialing service handles it.</li>
+   </ul>
+   <p class="note-src" style="margin-bottom:0;font-size:.86rem;color:var(--muted)">Sources: ASHA, new codes replacing 92507 and mandatory Medicare enrollment (Dec 2025); CMS Therapy Services.</p>
+  </div>
+
+  <div class="box">
+   <p style="font-weight:700;margin-top:0">Psychology</p>
+   <ul class="clean">
+    <li><strong>The code depends on the exact length of the session.</strong> Choosing the wrong one, or missing start and stop times, means getting paid less or failing an audit.</li>
+    <li><strong>Counselors and family therapists can now bill Medicare</strong> (since 2024), but they have to enroll first. Our credentialing service handles it.</li>
+   </ul>
+   <p class="note-src" style="margin-bottom:0;font-size:.86rem;color:var(--muted)">Sources: APA Services, psychotherapy codes FAQ; CMS, marriage and family therapists and mental health counselors.</p>
+  </div>
+
+  <div class="box p">
+   <p style="font-weight:700;margin-top:0">To confirm with you</p>
+   <p>You know these problems firsthand, so please correct or add anything based on your experience. I'd also like to know if we do these, so I can add them:</p>
+   <ul class="clean" style="margin-bottom:0">
+    <li>Do we track each patient's yearly Medicare total and add the modifier when they pass it?</li>
+    <li>Our kit says we verify eligibility for every patient at every visit. Is that right? If so, the speech therapy page would say it, since many private plans don't cover developmental disorders.</li>
+    <li>Do we request prior authorizations for our clients?</li>
+    <li>Do we help clients answer insurance audits or requests to pay money back?</li>
+   </ul>
+  </div>
+
+  <h3 style="margin-top:28px">What other billing companies show that we don't</h3>
+  <p>I went through the sites of companies that rank above us (Park Medical Billing, 247 Medical Billing Services and Therapeutic Billing Co.) on October 12. These are things they have and we could add:</p>
+  <ul class="clean">
+   <li><strong>A real calendar to book the call.</strong> Therapeutic Billing has one right on its page, and Park asks you to pick a day. Today our thank-you page promises a scheduling link that never arrives. We already have the calendar: your Zoom scheduler, the one our outreach emails use. The site could link to it.</li>
+   <li><strong>How getting started works, step by step,</strong> with how long each step takes (Park and 247).</li>
+   <li><strong>The EHR systems they work with.</strong> Park names WebPT, AdvancedMD and ChiroTouch. A clinic wants to know right away if it has to change its system.</li>
+   <li><strong>Reports for the client and a named account manager</strong> (Park and 247), so the clinic knows who handles its claims. We already send monthly reports (collection rate, denials, unpaid balances and how each insurer pays), so this is something to say, not to add.</li>
+   <li><strong>How they protect patient data</strong> (247 explains HIPAA and the BAA). We'd only write what's true for JCB.</li>
+   <li><strong>A note on the contact form</strong> asking not to include patient information (Therapeutic Billing).</li>
+  </ul>
+  <p>I'd also add a "Call" button that stays visible on phones on every page, our office hours, and two questions on the form: which service they need and how they heard about us. Until Analytics is connected, that second question is our only way to know what's working.</p>
+
+  <h3 style="margin-top:28px">3. Google</h3>
+  <ul class="clean">
+   <li>A written description for every page, so Google shows what we want under our name.</li>
+   <li>Remove the sample page, the thank-you pages and that internal page from what Google is told to show.</li>
+   <li>Connect Analytics and Search Console, and fix the tracking of the contact form and phone calls, so we can measure what works.</li>
+   <li>A Google Business Profile for JCB, created or claimed by Jennita from the company's account, so we appear with our name, phone and hours when someone looks us up.</li>
+   <li>An image and a short text that appear when someone shares our link by email or WhatsApp. Our outreach emails send people to the site, so this is often the first thing they see.</li>
+   <li>For Google Ads, a proposal for you and Jennita to approve: a list of searches to exclude (students, codes, competitor names) and an ad that says what makes us different. No budget change unless you decide it.</li>
+  </ul>
+
+  <div class="box g">
+   <h3>What I left out on purpose</h3>
+   <p style="margin:0">I didn't use any number or credential we can't back up. In our field, a claim we can't prove is a legal risk, not just a marketing one. That's why the preview doesn't say "up to 40% fewer errors", "5–10 staff hours a week" or "50% faster", and why it shows empty spaces for testimonials and certifications until JCB gives me the real ones. "50% faster" and "saves you hours every week" are on the live site today, so they're part of decision 3.</p>
+  </div>
+ </div>
+</section>
+
+<section id="decide">
+ <div class="wrap">
+  <div class="eyebrow">Your decisions</div>
+  <h2>What I need you and Jennita to decide</h2>
+  <ol class="dec">
+   <li><h3>Do we publish our full pricing on the site?</h3><p>When we did our competitor benchmark, none of the companies in it published their full fee structure upfront, so this would set us apart. Of the companies that rank above us on Google, Therapeutic Billing does publish its prices: a flat monthly fee ($800 for one provider, from $1,500 for small groups), paid whether the claims get paid or not. Nobody publishes a fee that's charged only per paid claim, which makes our model easy to compare. It also matches the commitment "you should understand what you're paying and why before committing".</p><p class="rec"><strong>My recommendation:</strong> yes, with the prices you confirmed for the kit ($2,000 setup, $500/month maintenance, $7 per paid claim or 5% of payments, $500 per entity for credentialing).</p></li>
+   <li><h3>Which founding year do we use?</h3><p>The About page says JCB was founded in <strong>2021</strong>. The Partnership Introduction says <strong>"Billing since 2016"</strong>. And in May JCB confirmed <strong>August 2020</strong> for the kit, which is what the decks and the Objection Reference say. The site needs one clear sentence, for example "Founded in 2020. Billing since 2016."</p><p class="rec">Your two call guides in the kit still say 2021. I'll update them with whatever you decide.</p></li>
+   <li><h3>Where do "97% claim approval rate" and "over 1,000 payouts a month" come from?</h3><p>The same question goes for "up to 50% faster" and "saves you hours every week", which are on the live site today. If we can't find where they come from, I'd remove them in Step 1.</p><p>The 97% and the 1,000+ are strong numbers, so in the new home they have their own section, right below the top of the page, with a line under each one saying how it was measured.</p><p class="rec">Could you confirm where they come from? How they were measured, over what period, and whether the 97% counts claims approved on the first submission or after corrections. It would help me understand them clearly, and if we can say how we got them (for example, "based on every claim we submitted in 2025"), a clinic is much more likely to believe them.</p></li>
+   <li><h3>The Medicare and Medicaid logos and the "HIPAA COMPLIANT" seal</h3><p>They sit under "Why therapists trust us", where certifications usually go. I'm not sure the government logos can be used that way, since they could read as an endorsement, and as far as I know HIPAA has no official certification. I'm not a legal source on this, so I'd ask someone who knows before we keep or change them.</p></li>
+   <li><h3>Is the first call with you?</h3><p>The preview says a clinic's first conversation is twenty minutes with you, as COO. If it should be someone else, I'll change it.</p></li>
+   <li><h3>Do we show the technology we use?</h3><p>Billing companies that rank above us on Google use their systems as a selling point. Park Medical Billing presents its "SPHERE Revenue Assurance System" and a client login. Integrity Billing, which works in behavioral health, presents "i-bot", its platform for benefit verification and reporting. Clinics want to know how easy the process is: how documentation, signatures, visit logs and patient information reach us.</p><p>We already have a system like that working every day. Showing it would let us compete on equal terms. I know Jennita preferred not to show it before, so I'd like to ask again now that we're working on the content. The Services page already mentions one tool today: <em>"We have partnered with EMRFlow to offer a custom EHR system"</em>.</p><p class="rec">If the answer is yes, I'd like to ask a few questions to understand how the app works before writing anything about it.</p></li>
+   <li><h3>Do we show the people behind JCB?</h3><p>Stanford University's guidelines for web credibility, based on research with more than 4,500 people, recommend to "show that honest and trustworthy people stand behind your site" and to highlight the expertise of the team. Nielsen Norman Group, one of the leading research firms on how people use websites, found in its eye-tracking studies that "users ignore stock photos of generic people", while they look closely at photos of "real people who actually work at the company".</p><p>Our clients trust us with their income, so they want to know who is handling it. My proposal is to show the team that leads JCB, with real photos, each person's role, years of experience and what they're in charge of. Who appears is up to you and Jennita.</p><p class="rec">If you'd rather not show the team, we keep using stock images, but more natural ones that don't look staged.</p></li>
+   <li><h3>Contract, trial period and start time: one answer for the site</h3><p>Our own materials give clinics different answers. The Proposal Template says <strong>month-to-month</strong>; the Proposal Builder, the decks and the Objection Reference say a <strong>one-year agreement</strong>, renewable. The decks say <strong>"No trial periods"</strong>, while the Objection Reference offers an initial period of <strong>60 or 90 days</strong>. Getting started takes <strong>two to four weeks</strong> in some documents and <strong>three to four</strong> in others.</p><p class="rec">These are some of the first questions a clinic asks, so the pricing page and the FAQ need one answer for each. I'll also update the kit so everything says the same thing.</p></li>
+  </ol>
+ </div>
+</section>
+
+<section id="need">
+ <div class="wrap">
+  <div class="eyebrow">What I need</div>
+  <h2>Things only JCB can give me</h2>
+  <ul class="clean">
+   <li><strong>A professional portrait of Jennita.</strong> It's the single cheapest change with the biggest impact.</li>
+   <li><strong>Jennita's real credentials</strong>, if she has any (AAPC, AHIMA or others). I won't list anything she doesn't confirm.</li>
+   <li><strong>How many people are on the team</strong>, and real photos of the team or the office if we have them. The signature list I made in June has 34 people, led by Jennita (CEO), you (COO/HR) and Lissy Reyes (Executive Vice President). Is that still right, and can we say it? The preview says "a small, hands-on team", which I'd change if we're 34.</li>
+   <li><strong>How many clinics we work with today.</strong> It's the simplest number to back up, and the one a clinic asks first.</li>
+   <li><strong>Testimonials, ideally one per specialty</strong> (physical, occupational and speech therapy, and psychology). Could you think of therapists who work with us and would agree to share their name, their practice, one result and how long they've worked with us? The best one we have is already on the site: <em>"I was owed over $8,000 across 3 months. Within 10 days of switching, I was paid out in full."</em> If Dr. L. M. agrees to share their full name and practice, it becomes much stronger.</li>
+   <li><strong>Your corrections to the specialty pages.</strong> You know these billing problems firsthand, so please correct or add anything based on your experience.</li>
+   <li><strong>The logo in high quality.</strong></li>
+   <li><strong>Analytics and Search Console</strong>, created by Jennita from JCB's Google account, so the data always belongs to the company. I propose that she gives me administrator access (rayen@jcbilling.com), so I can check the numbers, set up the tracking and report to you without having to ask her each time. If it's easier, Darrell can help set it up.</li>
+   <li><strong>Confirmation that the office address can be public</strong> on the Contact page and in the footer. 2400 Old Brick Road is listed online as a coworking space (Gather Short Pump). That's normal for a remote company, but I'd like to know how you'd like to present it, and whether clinics can visit us there.</li>
+   <li><strong>Our legal name.</strong> The site uses three: "JC Billing and Management, LLC", "JC Billing and Management Services LLC" and "JC Billing and Management Services". We should use only one.</li>
+   <li><strong>The contact details in the privacy policy.</strong> It lists jennita.jcb@gmail.com and 804-201-5789, which appear nowhere else on the site. Should they stay, or do we use support@jcbilling.com and 804-336-6220?</li>
+   <li><strong>The EHR systems we work with</strong>, and our office hours.</li>
+   <li><strong>Our social media.</strong> Who manages the Facebook page and the Instagram account, and whether we update them or take them off the site for now. The Facebook page shows 804-201-5789 and jennita.jcb@gmail.com too. I also couldn't find a LinkedIn page for JCB, which is where many clinic owners check a company.</li>
+   <li><strong>An @jcbilling.com email address for you</strong>, if possible. The kit shows your Gmail address, so a clinic that sees support@jcbilling.com on the site and then gets our proposal from a Gmail would notice.</li>
+   <li><strong>What happens after a clinic sends the form.</strong> Who calls them back, and how soon, so the thank-you page says it.</li>
+   <li><strong>Someone to review the privacy policy.</strong> It's a generic template that never mentions HIPAA or patient data, while the site says "HIPAA-compliant". It also doesn't mention cookies or Google, even though the site uses Google Ads tracking. The contact forms also require agreeing to receive text messages before they can be sent, and there is no Terms and Conditions page (the address gives an error). I'm not a legal source on this.</li>
+  </ul>
+ </div>
+</section>
+
+<section id="plan">
+ <div class="wrap">
+  <div class="eyebrow">The plan</div>
+  <h2>How we'd do it, once you approve</h2>
+  <div class="phases">
+   <div class="phase"><span class="tag">Step 1 · the first days</span><h3>Fix what's wrong</h3><p style="margin:0;color:var(--muted)">Doesn't depend on any decision. I can do it as soon as you say yes.</p>
+    <ul><li>Remove the repeated card and the repeated testimonial</li><li>Correct "you account", "Behavioural", "Dr. L. M.," and the 2025 copyright</li><li>support@jcbilling.com instead of the Gmail address</li><li>Google descriptions for every page, and clean up what Google is told to show</li><li>Phone number and a "Call" button on the two ad pages, which today have no phone at all</li><li>A "Book a call" button and the phone at the end of About and Services, and a phone you can tap to call on the Contact page</li><li>The thank-you page says "Your scheduling link is on the way", but no link is sent. Change it to what really happens (once you tell me), and link the "Book a call" buttons to your Zoom calendar</li><li>Delete the WordPress sample page, which is still online</li><li>An image and a short text for when our link is shared</li><li>Count a contact from the ad pages too, not only from the home (today Google Ads only counts the home's thank-you page)</li><li>Fix the footer email link, which opens an email with no address, and the social media icons: X and Pinterest go to Instagram, and that Instagram profile isn't available. Until we decide what to do with our social media, I'd only show the ones that work</li><li>Clear names for each page in the browser tab, an error page with a button back to the home and our phone, and service cards on the home that lead to each service</li><li>Fix the header image of About, Services, Contact and Privacy, which points to the test site and doesn't load</li><li>Remove the stock photos from the testimonials until we have real ones</li><li>Lighter images (the home page loads about 3.8 MB of images today), a darker green on the buttons so the text is easy to read, and image descriptions for screen readers</li><li>Count phone calls from the site as results in Google Ads, not only the contact form</li></ul>
+    <p style="margin:12px 0 0;color:var(--muted)">With Darrell: a few security settings on the server. I'll send him the details directly.</p></div>
+   <div class="phase"><span class="tag">Step 2 · after your decisions</span><h3>The new home page and the ad pages</h3>
+    <ul><li>The home from the preview, with your answers to the eight decisions</li><li>The two ad pages, corrected and aligned</li><li>Contact page with the address</li></ul></div>
+   <div class="phase"><span class="tag">Step 3 · as the materials arrive</span><h3>The rest of the site</h3>
+    <ul><li>Services, Pricing, FAQ</li><li>The four specialty pages</li><li>About with Jennita's portrait and story</li><li>Real testimonials, one by one as clients approve them</li></ul></div>
+  </div>
+
+  <div class="who">
+   <div><h3>Me</h3><ul><li>Writing and design</li><li>Images</li><li>Google descriptions</li><li>Google Ads proposal</li><li>Analytics and reports for you</li></ul></div>
+   <div><h3>Shannon &amp; Jennita</h3><ul><li>The eight decisions</li><li>Numbers, credentials, testimonials</li><li>Jennita's portrait</li><li>Approving every change before it goes live</li></ul></div>
+   <div><h3>Darrell</h3><ul><li>Server and updates</li><li>Domain (renews Nov 24)</li><li>Help connecting Analytics</li><li>Security details</li></ul></div>
+  </div>
+ </div>
+</section>
+
+</main>
+
+<footer>
+ <div class="wrap">Prepared by Rayen Ogalde for JC Billing and Management · October 2026 · Questions or changes: rayen@jcbilling.com</div>
+</footer>
+
+</body>
+</html>

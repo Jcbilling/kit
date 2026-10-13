@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>JCB Home Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one column of full-width bands; the hero pairs the promise with a claim ledger that shows the fee only appears when a claim is paid. Colors come from the JCB email signature. */
+:root{
+  --navy:#102A52; --purple:#7C5CBF; --green:#4AAD48; --teal:#0891B2;
+  --bg:#FBFAFD; --surface:#FFFFFF; --tint-p:#F0EBFF; --tint-g:#EDFAED; --tint-t:#E0F7FA;
+  --fg:#1C2433; --muted:#566074; --line:#E4E1EC;
+  --hero-bg:#102A52; --hero-fg:#FFFFFF; --hero-muted:#C9D2E3; --hero-card:#FFFFFF; --hero-card-fg:#1C2433;
+  --note-bg:#FFF6DB; --note-fg:#6B4E00; --note-line:#E9C766;
+  --display:'Playfair Display',Georgia,'Times New Roman',serif;
+  --body:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1422; --surface:#151E30; --tint-p:#241D3A; --tint-g:#15301A; --tint-t:#0F2A33;
+  --fg:#E8ECF4; --muted:#A3AEC2; --line:#2A3448; --purple:#A58BE6; --green:#6CC76A; --teal:#38BDD8;
+  --hero-bg:#0A1A36; --hero-card:#151E30; --hero-card-fg:#E8ECF4;
+  --note-bg:#3A300F; --note-fg:#F4D98A; --note-line:#7A6320; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1422; --surface:#151E30; --tint-p:#241D3A; --tint-g:#15301A; --tint-t:#0F2A33;
+  --fg:#E8ECF4; --muted:#A3AEC2; --line:#2A3448; --purple:#A58BE6; --green:#6CC76A; --teal:#38BDD8;
+  --hero-bg:#0A1A36; --hero-card:#151E30; --hero-card-fg:#E8ECF4;
+  --note-bg:#3A300F; --note-fg:#F4D98A; --note-line:#7A6320; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15;font-weight:600}
+h2{font-size:clamp(1.75rem,3.2vw,2.5rem)}
+h3{font-size:1.25rem}
+p{margin:0}
+.eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--purple)}
+.lede{color:var(--muted);max-width:62ch;font-size:1.06rem}
+section.band{padding-block:72px}
+.stack{display:grid;gap:14px}
+a{color:var(--teal)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+
+/* review bar */
+.review{background:var(--note-bg);color:var(--note-fg);border-bottom:1px solid var(--note-line);font-size:.86rem}
+.review .wrap{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-block:8px}
+.review button{font:inherit;font-weight:600;background:transparent;color:var(--note-fg);border:1px solid var(--note-line);border-radius:999px;padding:4px 12px;cursor:pointer}
+.note{display:block;color:inherit;opacity:.78;font-style:italic;font-size:.86rem;line-height:1.5;font-family:var(--body);align-self:start;max-width:70ch}
+.note b{font-weight:600}
+body.hide-notes .note{display:none}
+
+/* header */
+header.site{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:10px}
+.logo{display:block;background:#FFFFFF;border-radius:8px;padding:4px 6px}
+.logo img{display:block;width:104px;height:auto}
+nav.main{display:flex;gap:22px;align-items:center;font-size:.93rem}
+nav.main a{color:var(--fg);text-decoration:none}
+nav.main a:hover{color:var(--purple)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 .95rem var(--body);border-radius:999px;padding:12px 22px;text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn-green{background:var(--green);color:#FFFFFF}
+.btn-ghost{border-color:currentColor;color:var(--hero-fg)}
+.btn-purple{background:var(--purple);color:#FFFFFF}
+@media (max-width:820px){nav.main .hide-sm{display:none}}
+
+/* hero */
+.hero{background:var(--hero-bg);color:var(--hero-fg);padding-block:64px 72px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero > .wrap > *{min-width:0}
+.hero .eyebrow{color:#C9B8F2}
+.hero h1{font-size:clamp(2.3rem,5.2vw,3.9rem);font-weight:600;margin-block:14px 18px}
+.hero h1 em{font-style:italic;color:#8FDB8D}
+.hero .lede{color:var(--hero-muted);font-size:1.12rem}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.ledger{background:var(--hero-card);color:var(--hero-card-fg);border-radius:14px;padding:22px;box-shadow:0 18px 50px rgba(0,0,0,.28)}
+.ledger .cap{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:10px}
+.ledger table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:.92rem}
+.ledger td{padding:10px 4px;border-top:1px solid var(--line);vertical-align:top}
+.ledger td.fee{text-align:right;font-weight:600;white-space:nowrap}
+.ledger .date{display:block;color:var(--muted);font-size:.8rem}
+.ledger tr.paid td{background:var(--tint-g)}
+.ledger tr.paid td:first-child{border-radius:8px 0 0 8px;padding-left:10px}
+.ledger tr.paid td:last-child{border-radius:0 8px 8px 0;padding-right:10px;color:var(--green)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;vertical-align:1px}
+.ledger .foot{margin-top:12px;font-size:.84rem;color:var(--muted)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+
+/* trust */
+.trust{background:var(--surface);border-bottom:1px solid var(--line)}
+.trust ul{list-style:none;margin:0;padding-block:18px;display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:center;font-size:.92rem;color:var(--muted);padding-inline:0}
+.trust li::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:10px;vertical-align:2px}
+.trust strong{color:var(--fg);font-weight:600}
+
+/* proof */
+.proof{padding-block:48px;background:var(--surface);border-bottom:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:24px 48px}
+.stats > div{min-width:0;border-left:3px solid var(--green);padding-left:20px}
+.stats .big{font-family:var(--display);font-size:clamp(2.6rem,6vw,3.6rem);font-weight:600;line-height:1;color:var(--navy);font-variant-numeric:lining-nums tabular-nums}
+.stats .lbl{font-weight:600;margin-top:8px}
+.stats .how{font-size:.86rem;color:var(--muted);margin-top:6px}
+.stats .tbd{background:var(--tint-p);border-radius:4px;padding:1px 6px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .stats .big{color:#FFFFFF}}
+:root[data-theme="dark"] .stats .big{color:#FFFFFF}
+@media (max-width:640px){.stats{grid-template-columns:1fr}}
+/* pains */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px}
+.grid4 > *{min-width:0}
+.pain{border-top:3px solid var(--purple);padding-top:16px}
+.pain h3{font-family:var(--body);font-weight:700;font-size:1.02rem;margin-bottom:6px}
+.pain p{color:var(--muted);font-size:.95rem}
+@media (max-width:900px){.grid4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.grid4{grid-template-columns:1fr}}
+
+/* commitments */
+.commit{background:var(--tint-p)}
+.clist{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:36px;border-top:1px solid var(--line)}
+.clist > div{padding:26px 26px 26px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:18px;min-width:0}
+.clist > div:nth-child(odd){border-right:1px solid var(--line)}
+.clist > div:nth-child(even){padding-left:26px}
+.clist .n{font-family:var(--display);font-size:2.2rem;line-height:1;color:var(--purple);font-weight:600}
+.clist h3{margin-bottom:8px}
+.clist p{color:var(--muted)}
+@media (max-width:760px){.clist{grid-template-columns:1fr}.clist > div:nth-child(odd){border-right:0}.clist > div:nth-child(even){padding-left:0}}
+
+/* compare */
+.tablebox{overflow-x:auto;margin-top:32px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table.cmp{width:100%;border-collapse:collapse;min-width:640px;font-size:.95rem}
+table.cmp th,table.cmp td{padding:14px 18px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+table.cmp thead th{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+table.cmp thead th.jcb{color:var(--green)}
+table.cmp td.jcb{background:var(--tint-g);font-weight:500}
+table.cmp td:first-child{font-weight:600;white-space:nowrap}
+table.cmp tr:last-child td{border-bottom:0}
+table.cmp td.old{color:var(--muted)}
+
+/* more */
+.more{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 32px;margin-top:32px}
+.more > div{min-width:0}
+.more h3{font-family:var(--body);font-size:1rem;font-weight:700;margin-bottom:4px}
+.more p{color:var(--muted);font-size:.94rem}
+@media (max-width:860px){.more{grid-template-columns:1fr 1fr}}
+@media (max-width:540px){.more{grid-template-columns:1fr}}
+
+/* partner */
+.partner{background:var(--navy);color:#FFFFFF}
+.partner .eyebrow{color:#8FDB8D}
+.partner .lede{color:#C9D2E3}
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:36px}
+.fit > div{min-width:0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--r);padding:24px}
+.fit h3{font-size:1.15rem;margin-bottom:12px}
+.fit ul{margin:0;padding-left:20px;display:grid;gap:8px;color:#DDE3EE}
+@media (max-width:760px){.fit{grid-template-columns:1fr}}
+.price{margin-top:40px}
+.price h3{font-size:1.5rem;margin-bottom:6px}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px}
+.pgrid > div{min-width:0;background:#FFFFFF;color:#1C2433;border-radius:var(--r);padding:20px}
+.pgrid .lbl{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:#566074;font-weight:600}
+.pgrid .amt{font-family:var(--display);font-size:1.9rem;font-weight:600;color:#102A52;margin-block:6px 2px;font-variant-numeric:tabular-nums}
+.pgrid .per{font-size:.85rem;color:#566074}
+.pgrid p{font-size:.9rem;margin-top:10px;color:#1C2433}
+.opt{margin-top:14px;color:#C9D2E3;font-size:.93rem}
+@media (max-width:900px){.pgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.pgrid{grid-template-columns:1fr}}
+.call{margin-top:40px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.18);padding-top:28px}
+.call p{max-width:60ch;color:#DDE3EE}
+
+/* about */
+.about .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
+.about .wrap > *{min-width:0}
+.portrait{aspect-ratio:4/5;max-width:100%;border-radius:14px;background:var(--tint-t);border:2px dashed var(--teal);display:grid;place-items:center;text-align:center;padding:24px;color:var(--teal);font-weight:600;font-size:.95rem}
+@media (max-width:760px){.about .wrap{grid-template-columns:1fr}.portrait{max-width:320px}}
+
+/* stories */
+.stories{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+.stories > div{min-width:0;border:1px dashed var(--line);border-radius:var(--r);padding:22px;background:var(--surface)}
+.stories .q{font-family:var(--display);font-style:italic;font-size:1.1rem;color:var(--muted)}
+.stories .who{margin-top:14px;font-size:.88rem;color:var(--muted)}
+@media (max-width:860px){.stories{grid-template-columns:1fr}}
+
+/* faq */
+.faq{margin-top:28px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line);padding-block:16px}
+.faq summary{cursor:pointer;font-weight:600;font-size:1.04rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::after{content:"+";color:var(--purple);font-size:1.3rem;line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq details p{color:var(--muted);margin-top:10px;max-width:70ch}
+
+/* contact */
+.contact{background:var(--tint-p)}
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.contact .wrap > *{min-width:0}
+form.cf{display:grid;gap:12px;background:var(--surface);padding:24px;border-radius:14px;border:1px solid var(--line)}
+form.cf label{font-size:.85rem;font-weight:600}
+form.cf input,form.cf textarea{width:100%;font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg)}
+.formmsg{font-size:.9rem;color:var(--green);font-weight:600}
+@media (max-width:760px){.contact .wrap{grid-template-columns:1fr}}
+
+footer{background:var(--navy);color:#C9D2E3;font-size:.92rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:24px 48px;justify-content:space-between;padding-block:36px}
+footer strong{color:#FFFFFF;display:block;margin-bottom:6px}
+footer .copy{width:100%;border-top:1px solid rgba(255,255,255,.14);padding-top:16px;color:#94A0B8;font-size:.84rem}
+@media (prefers-reduced-motion:no-preference){.ledger tr.paid td{transition:background .3s}}
+</style>
+</head>
+<body>
+
+<div class="review" role="note">
+  <div class="wrap">
+    <span><b>Draft proposal for review</b> · New home page for JCBilling.com · Yellow notes mark what needs a decision or a real input from JCB. <a href="JCB_Website_Proposal.html" style="color:inherit;font-weight:600">Back to the proposal</a></span>
+    <button type="button" id="toggleNotes" aria-pressed="false">Hide notes</button>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="JC Billing home"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJUAAABUCAYAAACLFnVeAAAxCUlEQVR42u19eXyU1dX/Ofc+zzP7ZCULAcIaIGFTEFdMcFfUatsZt7qg1VZckLpURX0yohTqWpf2FeuO+DpTrWurLVXi+roiYgJB2SGQPZnMzDPPcu/5/TEJBAQLlPf9aeTymQ+Zmec5c++53+ecc88951yEH1ELhaI8FApBOIyi57MTplw0cMyQww9yK/6jNe6ZoCjKUI5Ksco1N2cu4IwBAYEjHDBtw5IoGqQwvrGl/VnKiL+/bM3fPlv8wSsNPfR0/W0FYImMRCISfqQNfwyD1HWdVUM1YAQlAMC0Y6cPHd3/0NPzgiUnKtx9qFsN5rgUDQAAHJIgpQAiAUAIBNTNKQSGDDhjgEwBAADLNsCw4y2WY33Y0rHp1Zq6l1/64os3mgEAolHi4TBKgB4CB0DVJxoBYSwKrEcyXfizOVWD8yt+7XMFTs/xFXoAGVi2CcKxCAAkECEhISAiEu7AnQy4CICQAIAQkACQqYqKqqqBIAEdicaWjkTjX5Z+/f6Db7z3SF2PdIzFwuIAqPpAi4aiPNw9mdPP0I8aWFhxa46/5ISAKxtMKwVCCIdAIgAwRNxnPhARAYBERFC4xjXVBa2JhnRb1+aHnvuXPnfDhg3t3VJLHADVD3hM0RCxcAzFiVMuK5486ri5uf6ii/yeXEinkyTJkQD4HwHpuwFGQuGK4tb80Ny16ZstrXVX/2HRrL8TUfcvIh0A1Q9tQIhARPCrs+67aFjRmHl5vpLCVDpOkqREBL6vQyYiQkABCIjIen/ejSZCBEBAZBlwoXBrXsUSBmxqr713/mOXXIeIdNttt7G+bsT3JVChrhNGIqhef+ETjwwtGnshSA6WYziIoPwnQyUi0BQXaJoHHOmAEBZIEoCAwJgCCtcAAcFxTLBtS0qUhACcJEjGOXlcfr6h+as3H/38mp9u+WxLStf1Pg2sPgOqHhvqN7945L5xQyqv6Up22oIchSH7z8ZIJFXVzToSjWu3tq+9y5ZsVTLemO5Kx7nHFVT79xvsUTQsV7nnSK8WODTLm1+ocBeY6ZR0wAFAxhiA7fcE1U2tKz559u17z6iv/7AhFPo5j8Vi4gCovrf+pxCPxWLi/NP1SQcPO/ZjlXsdISxlf9hNREQKVyFpdbaadnxh2khtlmiuI8L1abtj0/3P/qYNAMye66+/+JGpWa6CG7J8BSdpPAhpq0sAIgdJjt+braxtWrbyL+/de1R9/aetfVUV9glQ9ayu9EsXLRzUb+x5CaPLQURlP7omQOUauDU/AEgQ5IDtWJC2k+A4dtIRZgdDXC2ktfbrhmWPPfmy/u6vQ3NPH1w0IZLvHzQhbSalIJsBMcfvzVI2x79e8qcXLp/WcFlDGiNAfc14xz4yBho3bpzvnKN+tzrb17/QdgwJva3p/QMsQup2CyACEjFgjHHGgTEODBloigtaE1tgVcO7Ex6J3rYMAOCmS578fVHOiOs16ZYmGYjAhd8bVFY3Ln9j7p/PPrkvOknZD30Auq4jAMBhI8/MU1VvtpA20D49LATUuwFR73lGQAQEBRAUAFIIgREJsh2LLMuQhpUQ8USHEfTkSRCekReH7rj4kp/OO/d3j110w6rNn1xsUBe6uJeIBE+m4s6wwrEn3Tj9qUfDYRS6/jbvS5KK9ZWBGOABAKI9k78ERJKISACBA4ACkZHCVVQVDVVFQ4WpiMgBAAUQOEQkiCTtKFAQAbt/lVBqmstjWF1sU/vy9/v5B3nGD6989lehO49/+Llrnvhi9eKLkk4H0xQ3SRA8ZSScocXjf3n12Q/fEIlMdfRKXekrc/GDf0JqamoAAMAUG+WY0uOuDLizXI6wnYxSJEAAAkBJAIQAEgAlIENNdaFb8zBVdTECYpZjoBBmu+2YCUdaKcs2FeSguDQv87j9TFM9DIAhkQQEkkhAgIAK09CtedHl9vDO1BZ7dcOXMz79+t3PJped+HSepyjL58n++cCBIz5/8q+RF0qKh60tyBn4U5W5hZA2Q+Ii4M85cVDh4CX3vlm9NhSK8rq62A9eDfYRQz3Kw+GwmHX+grtGD5x8HYAKSAREEjIgyGwGA0MQIMBIxyFlJraaVmqZaSc/6kolvmxLbtrY3tma2Lx1aTw/kM8F9+T2Lx4ifCy7NDtYXOZ3Z0/0urxHaqp3kMrdwBDBEQJskY5bdrK2PdX6l6ffmPPMlMk/6Tex9Li/Z3uKB6WtLqGpAZ40m43PV//zzOde//2bV5z14OxxQ46+wzINR4BAjxbgLfHVa/9R9+TBS5a81Nm9YKUDoPoejIOIABHpirPuP7VfVv8TGVdGImj5JERQ5bzdJtFpS3NNOp2qbUts/vSvS55Y3tb2TbwXDeWqcx94YUDu6GM5YKctnbSiKFtsy2hOWh2rU1b7is9WvPLxsJIjheYKHK9qWpNtpVoam9YYwKQxfODhFchMbVX78jcPKZm2uCA4sMwwkwKI0KX5WDzd3PnF6neOXfT6nM+uv/CxV8pLjjgtbrRbCIxcLo+rduN75z/w7BUL9UpdidREnB/yZPQVPU6ICAgIDz9/zWsA8NpOKl7sxgfFqquXsC1bVmF7e45M2bXTO80t1cVZZVf18+cDAg7lyIAhByklFOeNavn0m7enelh63dCiyQ+QkKmhRQcXuhV3js+bC5IcMG12/i1/PLX8jhkvrysMDh2QTHfKtJ2UWd6CrDGDD3/ttMpLprz17nPn+47Pe7e0oHysZRkAKMG2U50HXArfW0dolJeX98NqqJLsdi4BCKSUCNWA1bCEAQDU1TVTLBbeeRmPPe/P+8m1VeXFlder6OUkLZAMFQmitCi7dHhLsiH9Ud3iceOHHX7O4MIxka5UHKR0gIBshWnggKXWra85a+nKJR/8pPLqT/J9/YvSVlICIHndfr61Y03t35c9fjhjLvfUkT+7Mz974JgNW798455nL79D13XoC87QH0OQHu6FjYK6/jaPRKY6rt+WDh5SMcYPzcK/csUbm27Fpw/tn1seY6Bge6Jh3Y0PnzLkuumP3VlWPOlmK23YkkiVIEjjbjJFgm3tXH/whqaVxoShx3wRdOWpppNERqrw+wLKmq3LXr7jsXPP6KsM53Cg7dAKrkhhBVSwwJHj/+Lt3/+uQEnxL3MDpZ7K1cfXKrnec4x0ysoJFuWPL58yfN6fL7iyouxwT17WgKOlEA4CcoeE9LmymbDNU/6waMYtwwaNrc3LGnC2gm4hwOaO44isQH55/5IRX92o/2PVjPJqPq2gAmN9YNXX5/xU+7PFYjFhq5Q2ySFb2mR5MJ00WplL83COCkuluqxcT/Evfh26feS8xy68ccWm/3nS5fUqCGgjSGaYcfJ5sgZeft5dkx6J3fDXbzZ/OlvVFEVhmi3BsT1aELJduZPDYRTPbVmA4T4WGXoAVAAAus4q39aVSl1XurYUKZW6riABY0AopUTN8uZ83FnzYe2GD19gKtOyg3laIt3eknA629/WSbn/mV9PX7v5i6d8viyVMQVcmg8taUJbItGs68QeeO7KufUbP3zE5dK0oCfP09y5rrMz3bKQiLC4uKHPRSrgAUTtuh228PKXZYH7dOQSrHVdf156yeOXAgD8dupDRwdLio7+sv7T6POfzFvVO6nihgsefbgwZ8TFCEDrmr743QPPXTMns3AIUSSC8jcXLDinMNh/wPt1b77+ylsP1mWiQfteJCj+2CUURCJyyr0XHSyK/eNM05YoiHMhSfj4DZCrjWYMQW4xP+IW/BcqitLh7mq1vYbwt7Mvl01/fj1Qhos9frITKy8cLBwpF7//zIaMEz8Dmp6I1F7ujD4JqL7kp9qnVlkFrCYC0s53n8eHBH/D25OAPPOcke0AswRIQOD9XIeCyg8lIMimPNCyfOA0Nv4WAH5fuURXaiDiICKQTgwjuC6DV2KR7pSwbhCBXqkrUFUFAEskIvbZyM8fNah6mqkyU7MskI4tQHAOCMAEACECEoJDDqAtAIABEQhIp7lQMP0tsR9Bqes6AwDoDaieFqmJOFAT6fP87POGevckf0vNh0JRXlVVDUSE3rhjYNxuoaTTzLqsFtZpt0hBFgAAMQQwMc07RQuLWy3YZTVjp9mipqzUrn4vEon8qLOT+7pNtW0/sAdcvSb7Ww7RygsvzN7c2Cg9Qzj3rBWCnzfkL06hdjxDDmJDfBGLbbo8URJQ/Ju7nFwA2LBhQ7qurs46IOd/hA/L6VN/PRIAAhnpFOI96uni06vPm3flPz6949evvTv9tNtPzdzEtt152KLLX5/8j2vo0MUzacJTv3wcACAUjR5wFv84bSpCIoAzqi7KHld2yrM5vuKTDq04bd2y+rcviMbufp+IcPmnTUOHDzp0Yb/gAJDkQMCbd9Q1v+j3i/sXXv7shY8/4X7qoukmLCICAEFAgJQxE2LhsNB1XYlEIgJ+hDUSfrQ2la4v4YhIIwZXXTu8+OBTVO4ShcHBQyeOOu7ln504owIRKd8zaGKWtx8ljHY7ZSQclWtiaNGYhVeE7rrwqenT06FwlEkEH/e6uOr3cVIF/faEe8afceqsykgk4kSjxDLuggNtV61PiXMddAaDQa06Y4IU8ZyTsn2FR1i2IS3bgGxvvs/ryT+No/F0IJjflu0tmulWfSjJYUI4qKKbsoOFZw4dWPHNU7FLlw06cdIkm9sJkbbXtCaaXj+ldZpaWjr+9RFDxm++/rbDPgeIQDQU5X1pz+6Aob4Ltdc71ekXp80eMqa0clm2N9+ftg0gABn0ZPNNLSs/0Bf87MibLnr6lmElE+cYRpcjgRQiSSrXwJYGrt742SUPxmY9fv0Rt48sHXyoZ13XN9JdnHfm4PzyatNJw9a2NYte/fSha7744r3mTDYMyH+TZoUEBNV6Ne64UqymvlhbAfsSoE6ceF7x5EnTDtu0ZXn9E6/8ru6K8+47vazokJdVckmbbAQA6fME+drGZS/f+dh5Z1RfHr2zJGf0zWkzYZMEJBCgMg9DBdhXG969Jum0Lx9fWvUvN8+BtNkJDLjDUJFut09rTW5evWbrsusWRH/70q74msnyqWIVFVV0VpgJ2o0JRjqxaqiGvuSG+MGDSgedVVM1nX70VYMPGXPCu/1zhpbEjVZzY8uq2fc9c+k9V57zwIzRAw97GCQ6jrA4giJ8Hp+yZuvSl+98/PwzbrjwsYdHDTx8BhGBJAkJox1AUsqmtHf5+g/P7hfwbxzU75C/Bf2FWSAJJAlwHBNcmg8cYcHGlvq/NjR/fWPJ+MPX9N+yCnOOu0zuomwQnnbMJQWFOaX5uTlFAGDB5qatzsqv6rd+tibWeUBSfd9A1R3T/ZvzHrq4YvDUxxKprrTCFRdjgF+sXXzZI7EbH736vD/eOHrgYb8TtrQdMlUO3Ha7ferahmXRV9+a/+vTj7/+bpcWMDc1rVvcmdjUZol0sDC3VOUucDVs/XJxQ0tD0aSRPzkm1184yKMFSxHZQEVRuQIqOGRlb2lf9d69z8y4qNeK0PXr8P0jPC7Pidn+4skqV8aqTCthyIOccyACEI4jJVBLSsQ/Wd3w2fULX7pzxW1630iD/8G7FOoK6ggAoC3V/EVnqhFcPKDajildigdGlhz2h+mnR7584NkZ82aE78kbN/SY68ByObY0FMe2neL84eFxY055+s7HLrjk/JNurSwtHnve0OKKwzlXBqlcVRAAhuYcpNmOWJ12Uu+mzM7ljW3r32ns3NARDEBDc2eLaGttkGUDJwWvDN/9E5c7e2TQmzOGM9cRHtU3JODNRQYMhHTAEQIkiUySICKompshYkGRf/A0FKKYgA4BqAaAyAFJ9X1oPSUQrz3/0btGDzr8uqSRsIkc7tH8rC3VuPG9pS9Vvf7en9Zccda9d48ZUnktCG6n7U7a0PbFSV2mvXlI7qjn8oL9D9YUN9iODY6wgKhbYCCCyl2gKi4AJLCFBaZlgG2npCRJiAiMc+5WfKAqGiAq4AgLbMeCTIU1iQjQXbtqO7+pOyVaYZo07A74oPbFkS/+609r+kKZoT7hUqiri0E0FOW/ee6Cf04cc+wh+YEBo2zHFI5jQ5Y3Nzsnq9+pniz3a8++Ov/5kaXj7IGFo45f17L68bufvOTBn1ddvbwkd0RZykw6pm2QEDZIkNtWbJIkCWGTaRvStk0phE0MGCjcxVTFzRSuMYYKSCmF4zjSdkwphJ2BDQJH7K7ah9hdRDTzyhQWzST5MabwzkTLi0vr315fUHAF+6EnlPaZFK3aWC0REU0Zd+ovTppy6UeFWcNGJNNxkTIToiB76LAp5Wf/062pZ9377JVzr79ogTtpdLnOOeGGydm+4uJ4qsWUBFpP/cReAqWnhsIONYkkyO7iedvEPQIg337bnioACQAchbTIlEYi81nsgPPz+9JqoIYAgD0TfdQoGljyit+Ve26WJy/gZNSZDHjy83IDpeFRpWPW3b9o5kMD+vu+zAoWqzmB4hl+T4ECQMiQdde4xkx6PIHsnnlJQNi73lVG9GRe+2xFEEhVUTFldjb97dOnq1tbN1p1dXUHQPW9AlZNDYVCUf78C79pd/tz3ynIKQkFPDkexzHBcSzyuYKevKxBP5885sRRjV3tby169e7VI4ccukHRtEGmlVCEsDXGGVcVjWmqi2mqh2mah7lUFwMAFMKB/Vl/VgIJnyvAt3Sufv6lfz7wF11/W6mpeerA6u/71mKxbZu+HweDeSceVHrUP7Lc/bIMKyksxyAGnAbkjz7b78k+pWLAkQs+qn/hjw88d8UTAACTh58UPGTi0UUcggMZV/v73FnZgLLEpfmyXcwzze/JHuAIh/ZPhT4pNcWLrcmG9MqNS+8mIKyG6j7hAO2zm6J65dtKpGaqc/YpNx46fmjlG/mBkuyUkXCQgUJEQuUa11QPtKeaIG3F/ydtp/6ZMDo+bWzduE5AYkun3CoKvQVItn9AVlbxwH6+QbOLcgcfapkmAfvPNuJl5vcZVxnWbnj36gefnflg77rvB0D1fQZWRmI506ZOH3/E6J++UJQ9fFgy3WkTOQoAAwQmGEPFrXoBGANbpMG0U2ALGxAAOFNBVVygqS6QQoJpGf+R+pOZbAfh1QJKp7HVXNe8/KqHFs16tK+dCtGng85qamqkXqkrjy65f0tn16ZYSXHZsGxffgUSR0G2RARFApEtLOnYlpRSEgOOKnehwjRgyAEkScexpRA27KvaIyACAqEpGndrbra1c+2Hy9e8deZjL+p/03Vif/zjmD4VfvyjiAnqqV4MAHDtuX+8trhfWXW2r9hvpBNSkkM7ngBB0FMuD3u8n/u6tAMiJCZUriia5oG2xNbWpvZ1c+9+5pcPAoDdF8oG/egkVU+rq6sjAJ2RvgRPfGjyB1nZ3hc1xVfscnkq/O4cJqVAInIyMaPQ21Ww14DKlHAECQjkUjzMrXlZl9nRtbn968fer33u/Gde/d2biJmsm8hTkQN11PtC620QX3D6rVMH9x9/VUDLOTXb308lCWDbaRAkREZnASIQEtAufVEIQN2ntxEgAwTg3TVDwRYmxNPNGzqTjf+9uvmDPz3/8iPrMgsIXYnU9O1w5B9lSOzO5/+FjrmqvHTA+FBusPgEhSmTA55CReUqgJTgkABBAkDKbWf/MWCAyIAhAGMKIONA5EDKSkIy3d5k2PF32uOtL/5z6YOv1dfXdwFkar2HwiDxwIFHfd/Wikaj1Dtb+NQTLhs1NHfCodmBvAmq4h6NoA5BxDzOFLfCMimEtrCApDAZV9qEsLemLWO9JY3P2tq3fB5d+sdlnevXd2wH8I/vpNIDwfvQk3Baxaqrq8Qu6huwQYPGZo0ZMsXVr6AfAACsW1cHq7fUWps21XXCLko/RqPEIRaD8Ler9R0A1Y8WYEuAQVUVVEOVZBEm6TtwQTqxWAVgbe0S3E3ZRzgAqgNtV/Z4BiW0/RPczr4D2TQH2oH2fyqpdNAZ6Nvf74NxiaFQlJWX98PtPqJ9UAndqem7bNURAtwbWsBgx0HJ7+RH91k33dfSPkii/3savfm1u/ERIFTvQFPuS58qYQmDqiqAJQAFFXUUC8f+19Q9RqP0nY7U7u/3i7olIgxFQwfqGvwfGTShaIh/F91QNMqBdh2iiKdMvXhQvqtYMcEEKUhC9oYN/+70zJ1iqj2Xn3X3QQF33uigPxs74+2yy2yo+6/oLV8AQDoD9u/OGBl+1UkuF8AAE8zM0Ywu2H5Eo8sFHoe3Lf/T6+3dVjID/O4nruKiEwZCgGkmmMAMR64qOWb9Lp5SBAAadf6xebxQzbaSNmmKirTVaKyL1ST2Yjqp/JITcjGH5fTQMNvamr959uM47FnpbQQAGnvutBzZX821kl079+NbNA4LHebpKvL0NwHAZQLULnh7TbfbdofrRlxwTImWpblNM8NMrb1xY13s31StIUBgSN3nSLHx+k/GQVagwpft9xippMRO6+vk01980eOL66lMyHqefADAQ0ee8uLB5afUTxpx8srxw45epbQPHrp9yb0rP0+URyIRCcXgvfmSp2bPv+rvtaNKjnx/WPHBfy4IDnt0eMnEx0YPqPxw3pWvL7/p0oWzAMgTiURkKPRtKdMjeYqGF47xHTGkPnhU2cqsqWX1WUeW1WdN7X4dWVrvOqZ01aSFl71zyJ1nhwEjcnd963lyfJWDX/YeM7w+OGXkSv8RZXWjN74zcGeVUfm2zgEAPBOL5/mqRtYHq4Z/6T92RL0YHpwOAFCpV/7buLNtNCYUz/FVjazPOnrE8sCxI+rzJ486qZsG31Ma7sPybvNVlWb6cdyI+sDRw07N0ND5zvxih4+Z5KscXZ91VNlX/mlj6g/6w3k3AyJtk+SUGWdW1dBFvuOG12cdV1aXM6WsPjhywsjvmlvQdQaYOebw8HumTz9k4aWfu8aVLHWP6bdQDvI+6hqZ/5g6ruCdrNuraicumD63bOLEfIhEZCga4r2ZJbPc+bbPFeQm04gxhhIs5bslVFiEjp85YfzIExYWZQ2qcGwbLDstTSvVHfkPiKSq2d7+w/OCpffOmfHy+V+tWRx6Pvbg6t1ljUgfRwyqHEECg55jz2j7dQzzeY53Ci/wTTnkgekTIldHbtZJZ5HdSCzyKRwDCmcWBwBCh+zdT66HazygcQGOgh6Vk0bq3qoK6eGaFlC5JEcBn8pZjlfsGw2FC1AU9KrcDuz+HGgKMsSAi4NtoVSQKQOCt469JfSX2Fmxel3X2baEL7/KMeDioBCiCxn4te+2aSMRWR46Idd74qD/htLg8QgChGETpE07E2pNCIgKy9IGagW+mwLXTjp/7LKS82Lh2Ds7gEZIB4R0SJKUQjqMMU67A9Ttt98uzz/rN2UVRSf8o59vQL+uVNxGIlQUj+JSXa6e4qq2bYBppRxwiPpnjTjIPVx7031q7qnV1dX1APBtYDkA4GQOcJQEgBpDxaWxHl+RMC1wumwhVEbKyOybJs47+/0IRl4PRUM8Ft6FqhZE4BCBkAQCJPLv2CaRRORIAgkSHCKgfTBABRE5RCC6aezLlrHspiH3gIYDAI4kEATScYSa7XHx0uACIKisq65AgFrazgfZ0y/8LpWnA8CTX4zPDpw25A02KHiIHU/ZJABRYwp3axrDzIansATItHDsdJqUAu8ANqnk5Yl3nXcm21mlY6b2HOLud+gRoBpKSko8w3OPeKGfb1C/rlSnwwG5x+NXOtNbExva6l7a2rHm3vXNX/09YXZ0ej1BBUnFZLrDLCkoH5aXO+huRKSKimrczS8gIBHXOFJ7ujlV3/JS+pvWl61vWl/CTqeZeZCDLQhUlJjvu+o7J4h108ukXOEeWEbbcqj+A2MZAWg/0NjDfnRfhQy5kzAcb2ng6PG/O/eyGIbFxM+28G3WGvb6tzujOxZiEYzI3BPHL2ClgUOszqRNJLnqVxWeFElrbfs/rU1d99jftD8v2o1Nik9ViAN3EmlLK/JnY5Z70V7HqGfObkFn1nl/vLIkZ/SYhNFhc86ZomhsffOyhR/UvnTL2x++uL7n+mnTflVyUPHR9w0uHB8y7ZTy1Yb3F23urL1R13XWfXbwbp9X5lKYnTA//3LG02f2fDhp1qmVrHLQYqEwJk3JyMtGAADrllJ7cw5N32yE3JKOdA3O+l35hae8curE4qbP9mKVFwvHxPg7w1O1wdkhK244CMS518XMDZ1vp1c2/WrFXa9/3XP9yCNGBvznHHGjOjR4M/OqmlnX+lbim6br9xZUWF1dJSJPlrpzAsWXC2GSBACv5uXfbF367PwnLjy/G3gKAEBFRRWFw7j5dXgkfMP0Pz9qpJOfP/jczD8BAMDLewYAqXDWbUsBSIJP73vtk4kTf2nxbI8XgQh721sHGgBDJFNKVuTJdR9edG8EI+fuuaMhBAAxUPN914GbE8YdyfwuRa6Pf7D0kidOBgBz4qeXqf2aXAwAIHDylFQMw7Mn3XWuYG4XfnrVE9UAIJS9k1I6IqK8+Gd3jAl684ZYliVdXFPaks2t73/65lVEhFVV1TwSmersaH/Nkb9/4peXZt4Ti0Rgj+oyEQEwQm/FVScNc/sVVabR4cPzL+S5Pq/tWJYa8GtyfXwZAMgQRXkMw+JHDyoEQkLmJEzhGhg8Z9zccxd9efOi14jo3801xsJhMejco3IooB4p0g6CwjglbCf9+earAMCceNll6meTFtjbb3kQAAA+vX7Rbb0J7Z2kWlLFACIy2100zqMFwLQMW1M9rlTXpsXvLV/UXl19qVKzU3hstyGO0VCUAQCEI7iHE49cpExQcl1H8CNL64EhcADgAY07tk2cKarV2NWW2NAwFwAgVl17YA8OAMgmZCqCFIRSI9JKAw8NgAH/Ypyn/53AiEQilFeSO4x5lCzpSKG4Fe60G0uXP/zm5xMfuUz97FcL7LHVP7tUG5Z3vGMYAgl77LWesuICaG9BVQUANQAgnSKGSsb2RQJpm2syhceW7Has+5p+RAoD0vi2pYmwhQWAnHHGO7/c8vuVc9/8vFLXlZpI34v13jtGgeQ+jaXqm97TfL5+rMRfJhJpRy0Jlub//mgdLdlFfPdasK6iDgEA0iAHBDQVQDgOcsYd024EIuz396sZAICrMGuoq6xfyO7oAuy2THAnj8c+5a9JJCOTEU4AwIBA5P47MREKhTjtbfFVImAKourRuOrRuOp1ce53aYjAHeHI7MkDZ4+97WcX1kQijk76j/tEMERiCgfucn1NqzbPVAlRcgXtpEF8cGCWg+IoMqxtlZZ329y8CwQBdh9vgQz9gEgbEpkptpPpTcI0gRwJ0pZAtgSny5RO3HTsLsuxuyxnryRVRV0zZdwoqXrbsQAAuJAmaKqnEgEpWkG0qxVYT14bAsKe57gRMZeCojm53o4nosSIA5DgwEtYoe9cUCSQWwm4y/IemnDVSX+LsEgzEOBebTb3NWElJQBSwedzX39z4tDCV5Vh2aeJzrRAr6oxRI0cmUl33EWL1ZYTAIC7lX8j07ZNXqZI0wHFo44ZEDostyJU11kHgH4ba0WL+QU5jiQAxhzk5MJRTEO1h/N7BapwLCQBAOpXfb60f84oI+AtcJtWWuRnDRh12Vnzzg2HcVFU/0qL1dWJ8vJaqqurwPLyfhiJTHV+esqMoze3rqyPxcKNe5iNK5mqMMcQK5Ze8eQNvb+Y9MfpxEflnOfEDVMr8PmdQTmnAsETldWVvAZq9psaREAWioZ415YuHoqGdgDrnu7O036gsXfAIgIiTF995iyPTzsOc7gLTCmpu3rNbm+MRCQQ4VLEzRMnT/+G5wRHiZRtqf182XmHD7suhs/eHIrqWiwceQcADurNpgmPTl+rlGaVOoYlEZHtpUsBKVONF7dMOvjkV/O1weGE0SFBMhxROPGRi067tTkcGfPPne86/4xbfzJ2UOWLzhBzw5gBU6aHY+Ele1bci4DYt52wTOBGBgjAkKSCxILagIzNVwUQqflPkdTt7gEAoES3/2uv7UFiEhghKAyT+0pjH7svAZFqAVYfVHzOLZ784ntMTDu4BwKkckk1rwFwZNx8UhvI50uw0bFs4R6Sc2N59RlrY+HIozvfk5VVmsXc3COk7I5jJKlsVzaE9816+9/6fGprq4mA8KLWuXqOr/inXiWbWY4BPneOf+zQqX+/4cKhTxl200KGWoNlmcNzgoPOyg8OON/NfIQuHDxh8An/uvoXBfdEIlfcsPPxZTvzR2Zqj/UbN/vMY6SmcCkdoXE+QOZpl0vTJiTkKAGxS7TtR4M3AylBoPl9I8pnn3kMdyMTTsYfhgyJM46uVW3LPnnmX627dbgSA0ESUh2dleWzz0wzDbiUGWCJbhqejU1ffragpuV/w2k78dNH1M8m/eq+gx+/+Cy1NGuykzAFIn7npnbN1IgAImTh4x+xcvwzeaG3v0hZQqoc/BMHLDj40UuOsTa0RXNV91cpEtmU4zmc53ovo1ytQJo2AQCoqsqUUCjEl1QDTo2gc/vlrxb4tFwgIASSIKXAb0vJiKwLVfBYbPbKa8598KaK0sq7iIRjWmlyKQE+ov+ki9NW4mLbSUtN8zKX4gfTTIIpU1Ijl3C5Ahrn2AwAUFcX+w7DHZk0TFAKPAdrBf5/EWY24pjCQZIAadoSXQqj9rTNm7teBwCoWQJyfzzqQMCFaYNnVMG1gHjtDvNNBFxTwfSop8Ez8FooGmK73HME4I5pgzY09wZtaO4NO1qLBIqmgc3UnwHAi99BY5+bsaYBAYHsFe2X82z3J+gCABsIvjMyCigUC/NYbHHnQWWhS1S/62/gUphj2oJxxtWhwbO1Yt/ZRtoWyBlXAhqQlOAYNiGgowVcqrm6/RMWi8XE1Ag6Z51868lBT84QS6SEgipKkJ1rOr9qygCpekdbIBYW0Sjx+xdddffXWz69HRVF8Wp+LqXjGGaXSYSOwt0ohbSNdKcpwHF8WhYHLrX6rR9dd99TM+7SdWK7MtgZZ0REPdvKDgHYDgpLgrQIpOXYlilt4aCmMs2jcWNDx10fzX95XSga4ruJZhQ99ADBQc5o9zsc268lIEeitCRkfnvbi5HhgLBMl2bvWu31+j0iZ4d7e14IhgRpCW03NLq3lDM8IAczWc+7E+dERA4BOd33CACAilCFqHxLV5bf9dfPrfXx+xSPh0sEM7NVTbvlQywcE6FoiC+9M/ZGelXzeWDYpAbdCgFJJ2GajhQ2aYxJBYSdNE0nbVsKZ6hle9X0+s732p/75DTlommRKUUFQ07K8vWb4eJelnaStsejcSPZ9f4nn/yrlYjYrk7RDIdRRENRHn4yrF8W+t3XgwvHz8nzFw/mTFOEcIBIAmNMZUwBR1rQ2rWx/putn9382Au3vRiNRvkuao13O+9A1QIexUGxe4XgEFDc6uxa0Xz/8mufi+w2QiEjeHKVoEchU4AUoCoG260KYIKytKBHQSEV4HzXGokIFE2FNHS4dkWDSwxqQY8CUiq4CxoIAFICKG4ViCz3LvtBGFCzPAo50q8FvZCmlGu3fZZM0wIeBUxT0YIesKg9e5s6q4qIUDTE1zy94jYnx/tzd1lOqUxbwB0GRMnd2lg9wIqF//u5UbNObQhMKpmn5HgOQzfjJAhISkBEDgrjjBBEm5GyV29+vG3m+9evh/VpZUBB2fVlpZNP6+xqhrSdEm7FwxNmJ2xo/foOAIRwePcqKhwLi+6V3ELIhVdmnfrwGX5XwSkexTNC1Txo2mnpSKO2tXXr4gdjV/4VABLRUJSHw9+WULHaTPFUZZ2xKWFZd9no7NKhgqg6GrA664uNby1/fHEDEGEMdwHQ7l7b69ofsNqSxWhJkKZjuw3e0q3Ht812j9oULelnU0sb1oikKbu9xLtYkiJxpiI1tK3q3e8eGrIx9Xz684bNpmFJhrRrGoDEFY5Km1gGABALxWRvGnaL8RexbEuzTFqOUOOKa6O5DDJ+Z7kzv9KbEmsdsu4iaQnhdXHZmFq2bYchAhTTywlei6UOGTf457Zph03TkqqDjDWZWwEAItUR2lWV7e3AitUAwOET5p17Mstzn4FuZQxo3AOWg4oj1psp5z1nRfsLXz706tqMax4Y3PGr15b/12+Xpv/wmw+dR2/8ih66/kO6+pz7Z/b4l/ZoG3I/X7en7UCc+t6uafeh6Trbkzol3XORqcQ774q/U5a/CAyjU6ac+LI1m5ff/vjLs1/ah8puqFfqvOKKagqFQPasZ2IxYLUPV+NeFKXAnrDa3e9BLoEaqJJ7khESioZ4U79y3GGFs5t+hEIh3jSjfI8moKYqInblaN0fNHRdZ0uqtkvKmqpqAbs7GZ4AK5ds51dBcx3t0hTQdVbZm+bUvSsS0sPHmqpq0bOaCUGMNS2pxZolsONc/Cp0//FXnfOH0y45a97o7b9PbB+eBOyJddd1nUWj0W2ngBJRz3fb4uF7/73T/wAA0Pv+HRxlO13b+4zknr977guFQrx3PPzO73fzW9j7fe97esbV04def2+L9e75f3f9731Pb77s1PcdxtmbZ9FodJdj0HWd9eb3zt/tzKOea3bHk/24fYT7XUX9oLY56D8+GBK/B/37/551roRCUR4CgNryWopEIrSXtScRAEjX9fz+/funVqxYkdXV1WUWFRX5ysvLh65YsWLrHXfcsWr+/PnFjuOI2bNnN86ZM2eg4zhdkUikY/bs2QMTiUQX5zywcePG9kmTJgVTqVRTXV0dHXTQQWebplkfiUQ+6zlge9asWbmMMaWpqUmMGjVKmT17dtOcOXMGB4PB1pkzZ8Z1XR9aV1e3qaysbOCdd965ft68eZOJyHvTTTct7n5Kqxhj6ldfffVWNBqViEi6rmtFRUVHNDU1mYj4oa7ruWVlZeVbt27tuvbaa5fddNNNUzRNy6mrq3t92LBhpQcffPDAZcuWbUilUlsPOeSQw1evXr1648aNDQUFBYPvuOOOr6+++upx6XT6mzFjxhxERGLmzJn/08OnmTNnZk+YMGHiypUrv54/f/6G+fPn92eMOR9//HHH2LFjS2+77bZ1uq4Pa2pqavT5fC6fz5duaWnhwWBQicfjDiK26rr+cwBIVFRU/DMc3p6ke//99x+VSCSsW2655eN58+YNMgyjKRKJpAEA5s6dW9bc3LzxvvvuM+bMmVO6cePGhqFDhxbfeOONG66//vqpLpcr0NTU9PcFCxY4+8MJq8RiYbGvZwxEo1EWDodFMBic2tHR0S8QCJQLIV4AgGnt7e2D4/H44wBQ7zjOA0SUAoALAGBmPB7/HACec7vdl3d0dHzg9/uPnjhx4mgA+BAAFowdO3aW2+3ONgzjkFmzZtVWV1ebAEAul+sIVVVPGD58+Aafz7cVABYqihKLx+N/AYB5wWDwoUmHTPo63hlXpk2bdr/jOHe6XK7ls2fPHo2Ib7lcrsfb29tjAPBhdXV1CgDI5/OVt7S03KYoysZbb73V7/V6XU1NTXpra+uDc+fOTRLRE/F4/K2mpqa3KioqZjc3NwdbW1sfKC0tHdPQ0HApIhoAcLOqqrdcd911z/l8vtNbWlruT6fTjyUSiSd0Xf8YMgkejsfjObOjo2NaVlYWHXbYYRc4jjOHiPyxWOyc8ePH/3bOnDm5UsongsFghaqqg/1+/yfBYPD3HR0d70kpX587d+4gRDzetu2uxYsXfw0AawAAHnzwwTzbtn8FAIW6rt9oWdZZjY2NbwLAWyeddJILABb7fL4bAWCR3+9fNHjw4CWapm295557XkylUk8mEolXTNN8BwA694d3f7+Ei/h8vi7G2E+9Xu/hUsouRCTLsoz29va1N910UyEijkDEcbqua5zzLsdxLAAgRVEcRVEUKeVGKeVIVVV/2tXVBVLKMQ0NDY8Gg8Eh8Xh8RM8eIREl3G73kS6X66eapjXMnTt3OOfci4jHAQAkDWOdZVlhn9832rIsR0pZyxir1jTtmKampkbLsp7PysrqP378+Kzq6uqebQVPZ2fnv1pbW59WFGUKYyxFRMnOzs5Gn8/XlE6n/zs7OztYVVWVjYiGaZqpzZs3b1JVNa1pWgnnPNne3r5RUZTPc3Jy7uecPxoIBCQipuLxeCsAQP/+/REAgHNuAUBROp1eeeSRRwYYY2MVRRk2f/58nxDiCUVRynRdf9XtdmcxxhxE7Eomk4V+v/8iwzA6iWhyY2Pjk36/XysuLh7dPfno8XgsKWWBZVkpVVUbOecohEgDAEyZMmWaoiiO2+2e1s3D5QAwXdO0ofF4vNVxnGeys7PzBg4cWNytdf5j9blfQNXU1BR0HGdeW1vbIimlz7KsNGNsgNfrLQOAYxljb3LO37Esq1II0TRkyJCbL7300pMNw2iVUqZN01Tj8bieTqfbAoFA3LbtN4qLi+9JJpO+wsLC1h4D1LZtf0dHx8KtW7c+3NjY6E4mk6e73e7HpJRNs2bNGh+Px5s72jtusWwn/dFHH3VallVpGMYrhmE84vF4HMZYMQCU9g6t7ejoaA8EAudnZWXd2NXV9ZRhGG7btvO9Xu+ElStXcgAokFIOBQDFMAwLAAaWlpaOam9v51u2bPkykUgkAQC6uro+kFKqt91221Ii8hiGEXC73RMAABYvXiwBAAzDUFtbW9+//fbbb1UU5RREfAcA3mppaTnDMIy6jo6OD4gITdMUlmUZyWQyu7m5+b8sy3pX0zSvZVnPFxUV6clkcrRt2009UqWpqUkzDGPdpk2bzr/llls2E5FWVlY27+qrrx5nGMYxXq93vuM43hkzZgw3DGNFMpnUk8mkp62tjdLp9HDHcUbatu3eXzbV/wPHX0j5rtSu3AAAAABJRU5ErkJggg==" alt="JC Billing & Management"></a>
+    <nav class="main" aria-label="Main">
+      <a class="hide-sm" href="#how">How we work</a>
+      <a class="hide-sm" href="#partner">Pricing</a>
+      <a class="hide-sm" href="#about">About</a>
+      <a class="btn btn-purple" href="#partner">Become a partner</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Medical billing for OT · PT · Speech · Behavioral health</span>
+      <h1>We get paid only when <em>you</em> get paid.</h1>
+      <p class="lede">JC Billing &amp; Management works only with outpatient therapy and behavioral health clinics. Our billing fee is tied to what you actually collect, so a denied claim costs you nothing until we get it paid.</p>
+      <div class="ctas">
+        <a class="btn btn-green" href="#partner">Become a partner clinic</a>
+        <a class="btn btn-ghost" href="#pricing">See our full pricing</a>
+      </div>
+    </div>
+    <div class="ledger" aria-label="Illustrative example of a claim with JCB">
+      <div class="cap"><span>One claim, start to finish</span><span>JCB fee</span></div>
+      <table>
+        <tr><td><span class="dot" style="background:var(--teal)"></span>Claim submitted<span class="date">Day 1</span></td><td class="fee">$0</td></tr>
+        <tr><td><span class="dot" style="background:#D9534F"></span>Denied by the payer<span class="date">Day 15</span></td><td class="fee">$0</td></tr>
+        <tr><td><span class="dot" style="background:var(--purple)"></span>Corrected and appealed by JCB<span class="date">Day 17</span></td><td class="fee">$0</td></tr>
+        <tr class="paid"><td><span class="dot" style="background:var(--green)"></span>Paid to your account<span class="date">Day 38</span></td><td class="fee">$7</td></tr>
+      </table>
+      <p class="foot">Illustrative example. With a traditional biller, you often pay at submission and again at resubmission.</p>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap">
+    <ul>
+      <li><strong>Woman-owned</strong>, US-based</li>
+      <li>Glen Allen, Virginia</li>
+      <li><strong>100% remote</strong>, serving practices anywhere in the US</li>
+      <li>HIPAA-compliant platform</li>
+    </ul>
+    <span class="note" style="margin-bottom:14px"><b>To confirm:</b> we need one founding year. The website says JCB was founded in 2021, and the Partnership Introduction says "Billing since 2016". I left the year out until JCB confirms which one to use.</span>
+  </div>
+</div>
+
+<section class="proof">
+  <div class="wrap">
+    <div class="stats">
+      <div>
+        <div class="big">97%</div>
+        <div class="lbl">claim approval rate</div>
+        <div class="how">How we measure it: <span class="tbd">to be confirmed by JCB</span></div>
+      </div>
+      <div>
+        <div class="big">1,000+</div>
+        <div class="lbl">insurance payouts processed for our clinics every month</div>
+        <div class="how">How we measure it: <span class="tbd">to be confirmed by JCB</span></div>
+      </div>
+    </div>
+    <span class="note" style="margin-top:18px"><b>Shannon, could you confirm where these two numbers come from?</b> How were they measured, over what period, and does the 97% count claims approved on the first submission or after corrections? It would help me understand them clearly. And if we can say on the site how we got them (for example, "based on every claim we submitted in 2025"), they become much more convincing than a number on its own.</span>
+  </div>
+</section>
+
+<section class="band" id="how">
+  <div class="wrap">
+    <span class="eyebrow">Sound familiar?</span>
+    <h2 style="margin-top:10px">You're not the only one losing sleep over unpaid claims.</h2>
+    <div class="grid4">
+      <div class="pain"><h3>Burnout</h3><p>You give everything to your patients. Following up with insurers shouldn't be your second job.</p></div>
+      <div class="pain"><h3>Credentialing chaos</h3><p>Delays, back-and-forths, and red tape before you can even bill.</p></div>
+      <div class="pain"><h3>No time to follow up</h3><p>Between sessions and admin, it's easy for unpaid claims to fall through the cracks.</p></div>
+      <div class="pain"><h3>Paying for claims that never pay</h3><p>Most billers charge for every claim they submit, even when the money never arrives.</p></div>
+    </div>
+    <span class="note" style="margin-top:24px"><b>Note:</b> The current site repeats "No time to follow up" twice. The fourth card is new and comes from differentiator 1.</span>
+  </div>
+</section>
+
+<section class="band commit">
+  <div class="wrap">
+    <span class="eyebrow">Our four commitments</span>
+    <h2 style="margin-top:10px">Four things we operate by, every day.</h2>
+    <div class="clist">
+      <div><span class="n">1</span><div><h3>Our success is tied to your success.</h3><p>Our fees are tied to what you actually collect. If a claim is denied or delayed, we don't charge a billing fee until it's resolved.</p></div></div>
+      <div><span class="n">2</span><div><h3>You understand what you're paying, before committing.</h3><p>Every fee is explained before anything is signed: setup, maintenance, per claim, credentialing and optional services.</p></div></div>
+      <div><span class="n">3</span><div><h3>We follow through on every claim.</h3><p>Submitting a claim isn't the same as getting paid. We pursue every denial, underpayment and aging balance until the money lands.</p></div></div>
+      <div><span class="n">4</span><div><h3>We're fully accountable. Partner, not vendor.</h3><p>When something breaks down, we bring a solution, not an excuse. Our business only grows when yours does.</p></div></div>
+    </div>
+    <span class="note" style="margin-top:24px"><b>Note:</b> These are the four points Shannon, Jennita and Lissy chose on Feb 17, 2026 (differentiators 1, 2, 4 and 10), with the wording from the Partnership Introduction.</span>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <span class="eyebrow">How it feels different</span>
+    <h2 style="margin-top:10px">The same situations, handled another way.</h2>
+    <div class="tablebox">
+      <table class="cmp">
+        <thead><tr><th>When…</th><th>A traditional billing company</th><th class="jcb">JCB</th></tr></thead>
+        <tbody>
+          <tr><td>A claim is denied</td><td class="old">You still pay the billing fee. Resubmitting may cost again.</td><td class="jcb">No fee until the claim is paid. We pursue the denial to resolution.</td></tr>
+          <tr><td>You ask about pricing</td><td class="old">The full structure often shows up only after onboarding.</td><td class="jcb">Every line item explained before you commit.</td></tr>
+          <tr><td>Credentialing drags</td><td class="old">Bundled vaguely, with unclear timelines and costs.</td><td class="jcb">$500 per entity for 3 months, then billed hourly.</td></tr>
+          <tr><td>Revenue stalls</td><td class="old">You notice months later, when the balance is too old to recover.</td><td class="jcb">We flag aging balances early and come to you with a plan.</td></tr>
+          <tr><td>You want answers</td><td class="old">Generic reports. Hard to know what's happening.</td><td class="jcb">Clear reporting and direct communication.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">And six more ways we work differently</span>
+    <div class="more">
+      <div><h3>Fees that fit your stage</h3><p>New and small practices can defer setup for up to a year.</p></div>
+      <div><h3>Credentialing with a clear path</h3><p>You know what's included and when you'll be ready to bill.</p></div>
+      <div><h3>Documentation is part of billing</h3><p>Denials often start in the chart, so we help get it right before the claim goes out.</p></div>
+      <div><h3>We prevent repeat errors</h3><p>We look for denial patterns and show your team how to avoid them.</p></div>
+      <div><h3>Keep the systems you use</h3><p>No forced change of EHR. Our EMRFlow app is optional.</p></div>
+      <div><h3>Pay only for work performed</h3><p>No flat packages. Documentation fees apply only when we do the work.</p></div>
+    </div>
+    <span class="note" style="margin-top:24px"><b>Note:</b> These are differentiators 3, 5, 6, 7, 8 and 9 from "How JCB Truly Stands Apart". I left out figures we can't back up yet ("up to 40% fewer errors", "5–10 staff hours a week").</span>
+  </div>
+</section>
+
+<section class="band partner" id="partner">
+  <div class="wrap">
+    <span class="eyebrow">Partner clinics</span>
+    <h2 style="margin-top:10px">Want to be our partner?</h2>
+    <p class="lede" style="margin-top:12px">We are growing our network of partner clinics, and we choose them carefully. Here is who we work best with, and everything it costs, before you ever get on a call.</p>
+    <div class="fit">
+      <div>
+        <h3>We work best with clinics that are</h3>
+        <ul>
+          <li>Independent and owner-operated, where the owner is part of day-to-day decisions</li>
+          <li>OT, PT, speech or behavioral health practices</li>
+          <li>Ready for a billing partner who is accountable and in touch</li>
+          <li>Looking for long-term alignment over quick wins</li>
+        </ul>
+      </div>
+      <div>
+        <h3>We are not the right fit if you</h3>
+        <ul>
+          <li>Are part of a large network or hospital system</li>
+          <li>Are looking for the lowest possible price above everything else</li>
+          <li>Want someone to "just handle it" without communication</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="price" id="pricing">
+      <h3>What it costs. Everything.</h3>
+      <div class="pgrid">
+        <div><span class="lbl">Setup</span><div class="amt">$2,000</div><span class="per">one time</span><p>Can be deferred for up to a year for small or new practices.</p></div>
+        <div><span class="lbl">Maintenance</span><div class="amt">$500</div><span class="per">per month</span><p>May be waived in the early stage, case by case.</p></div>
+        <div><span class="lbl">Billing, you choose</span><div class="amt">$7</div><span class="per">per paid claim</span><p>Or 5% of payments received, or a combination. We model which one costs you less.</p></div>
+        <div><span class="lbl">Credentialing</span><div class="amt">$500</div><span class="per">per entity, 3 months</span><p>Then $20 per hour once the process is in motion.</p></div>
+      </div>
+      <p class="opt">Optional: documentation support, $50 per patient · EMRFlow app, $100 per provider.</p>
+      <span class="note" style="margin-top:14px"><b>Decision for Shannon:</b> do we publish the full pricing on the website? None of the nine competitors in our benchmark publish their full pricing upfront, so this would set JCB apart. Prices are the ones Shannon confirmed for the kit.</span>
+    </div>
+
+    <div class="call">
+      <p>Your first conversation is twenty minutes with Shannon Long, our Chief Operating Officer, who personally leads every new partnership. No slides, no pressure.</p>
+      <a class="btn btn-green" href="#contact">Request your call</a>
+    </div>
+  </div>
+</section>
+
+<section class="band about" id="about">
+  <div class="wrap">
+    <div class="portrait">Professional portrait of Jennita Coles<br>(to be taken)</div>
+    <div class="stack">
+      <span class="eyebrow">About us</span>
+      <h2>Built for therapists. Led by someone who knows billing from the inside.</h2>
+      <p class="lede">Jennita Coles founded JC Billing &amp; Management after seeing dedicated healthcare workers struggle to get paid for their work, especially those serving the people who need it most. Today JCB bills Medicare, Medicaid and private insurers such as BlueCross BlueShield and UnitedHealthcare for independent therapy and behavioral health practices.</p>
+      <p class="lede">We are a small, hands-on team. You'll always know who is working on your claims.</p>
+      <span class="note"><b>Needed from JCB:</b> a professional photo of Jennita (the current ones are selfies), her real certifications if she has any (we won't list any until she confirms them), and the team size.</span>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Partner stories</span>
+    <h2 style="margin-top:10px">In our partners' words.</h2>
+    <div class="stories">
+      <div><p class="q">A real quote from a partner clinic, with a result they're comfortable sharing.</p><p class="who">Name, role · Clinic, city</p></div>
+      <div><p class="q">A second partner, ideally a different specialty.</p><p class="who">Name, role · Clinic, city</p></div>
+      <div><p class="q">A third partner, ideally a new practice JCB helped set up.</p><p class="who">Name, role · Clinic, city</p></div>
+    </div>
+    <span class="note" style="margin-top:20px"><b>Needed from JCB:</b> 3 to 5 clients who agree to share their name, clinic and a result. The current testimonials ("Dr. L. M.", "S. Rhodes") have no clinic name, and one of them shows up twice.</span>
+  </div>
+</section>
+
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Questions clinics ask us</span>
+    <div class="faq">
+      <details><summary>Do I have to change my EHR?</summary><p>No. We work with the systems you already use. Our EMRFlow app is optional.</p></details>
+      <details><summary>What happens when a claim is denied?</summary><p>We correct it, appeal it and follow it until it's resolved. You don't pay a billing fee on that claim until it's paid.</p></details>
+      <details><summary>We're a new practice. Can we afford the setup?</summary><p>The $2,000 setup fee can be deferred for up to a year, and maintenance may be waived early on, case by case.</p></details>
+      <details><summary>How does credentialing work?</summary><p>It's $500 per entity for the first 3 months, then $20 per hour once the process is in motion. You'll know what's included before we start.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band contact" id="contact">
+  <div class="wrap">
+    <div class="stack">
+      <span class="eyebrow">Get in touch</span>
+      <h2>Start getting paid for the work you already do.</h2>
+      <p class="lede">Tell us a little about your practice, and we'll set up your call with Shannon.</p>
+      <p><strong>Phone</strong><br>804-336-6220</p>
+      <p><strong>Email</strong><br>support@jcbilling.com</p>
+      <p><strong>Office</strong><br>2400 Old Brick Rd, Suite 19<br>Glen Allen, VA 23060</p>
+      <span class="note"><b>Note:</b> Today the footer shows jcbilling@gmail.com. The contact form already goes to support@jcbilling.com (per Darrell), so it's the natural public address. The office address is only on the privacy policy right now.</span>
+    </div>
+    <form class="cf" id="cf" novalidate>
+      <label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name">
+      <label for="f-clinic">Clinic</label><input id="f-clinic" name="clinic">
+      <label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email">
+      <label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel">
+      <label for="f-msg">What's going on with your billing?</label><textarea id="f-msg" name="msg" rows="4"></textarea>
+      <button class="btn btn-green" type="submit" style="justify-self:start">Request my call</button>
+      <p class="formmsg" id="formmsg" hidden>This is a design preview. On the live site, this form keeps the current connection to support@jcbilling.com.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong>JC Billing &amp; Management</strong>Healing hands deserve paying plans.</div>
+    <div><strong>Contact</strong>804-336-6220<br>support@jcbilling.com</div>
+    <div><strong>Office</strong>2400 Old Brick Rd, Suite 19<br>Glen Allen, VA 23060</div>
+    <div><strong>Pages</strong>How we work · Pricing · About · Contact · Privacy policy</div>
+    <p class="copy">© 2026 JC Billing and Management Services LLC. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b=document.getElementById('toggleNotes');
+  b.addEventListener('click',function(){
+    var hidden=document.body.classList.toggle('hide-notes');
+    b.textContent=hidden?'Show notes':'Hide notes';
+    b.setAttribute('aria-pressed',hidden?'true':'false');
+  });
+  document.getElementById('cf').addEventListener('submit',function(e){
+    e.preventDefault();document.getElementById('formmsg').hidden=false;
+  });
+})();
+</script>
+
+</body>
+</html>
