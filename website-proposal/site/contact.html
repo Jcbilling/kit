@@ -33,38 +33,41 @@
   </div>
 </header>
 <main id="top">
-<section class="phead">
+<section class="phead contacthead">
   <div class="wrap">
-    <span class="eyebrow">Get in touch</span>
-    <h1>Start getting paid for the work you already do.</h1>
-    <p class="lede">Pick a time for a 20-minute call with Shannon, or tell us about your practice and choose your time right after.</p>
-    <div class="ctas"><a class="btn btn-green" href="https://scheduler.zoom.us/shannon-long-s2d48h/introductory_meeting" target="_blank" rel="noopener">Book your call now</a></div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="wrap split">
-    <form class="cf" id="cf" novalidate>
-      <label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name">
-      <label for="f-clinic">Practice</label><input id="f-clinic" name="clinic">
-      <label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email">
-      <label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel">
-      <label for="f-service">What do you need help with?</label>
-      <select id="f-service" name="service"><option>Billing and claims</option><option>Credentialing</option><option>Recovering old unpaid claims</option><option>Setting up a new practice</option><option>Not sure yet</option></select>
-      <label for="f-source">How did you hear about us?</label>
-      <select id="f-source" name="source"><option>Google</option><option>An email from JCB</option><option>A colleague</option><option>Other</option></select>
-      <label for="f-msg">What's going on with your billing?</label><textarea id="f-msg" name="msg" rows="4"></textarea>
-      <p class="hint">Please don't include patient information in this form.</p>
-      <button class="btn btn-green" type="submit" style="justify-self:start">Send and pick a time</button>
-    </form>
-    <div class="facts-list">
-      <p><strong>Phone</strong><br>804-336-6220</p>
-      <p><strong>Email</strong><br>support@jcbilling.com</p>
-      <p><strong>Office</strong><br>2400 Old Brick Rd, Suite 19<br>Glen Allen, VA 23060</p>
-      <p><strong>Hours</strong><br>To be confirmed</p>
-      <span class="note"><b>How it works:</b> the form still reaches support@jcbilling.com, and the clinic goes straight to Shannon's Zoom calendar to pick a time, without waiting for an email. Try sending it.</span>
-      <span class="note"><b>Needed from JCB:</b> office hours, and whether the office address can be public.</span>
+    <div class="stack">
+      <span class="eyebrow">Get in touch</span>
+      <h1>Start getting paid for the work you already do.</h1>
+      <p class="lede">Book a 20-minute call with Shannon, or send us a note and pick your time right after.</p>
+      <div class="ctas"><a class="btn btn-green" href="https://scheduler.zoom.us/shannon-long-s2d48h/introductory_meeting" target="_blank" rel="noopener">Book your call now</a></div>
+      <div class="cinfo">
+        <p><span>Phone</span>804-336-6220</p>
+        <p><span>Email</span>support@jcbilling.com</p>
+        <p><span>Office</span>2400 Old Brick Rd, Suite 19, Glen Allen, VA 23060</p>
+        <p><span>Hours</span>To be confirmed</p>
+      </div>
+      <span class="note" style="color:#C9D2E3"><b>Needed from JCB:</b> office hours, and whether the office address can be public.</span>
     </div>
+    <form class="cf compact" id="cf" novalidate>
+      <div class="two">
+        <div><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name"></div>
+        <div><label for="f-clinic">Practice</label><input id="f-clinic" name="clinic"></div>
+      </div>
+      <div class="two">
+        <div><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
+        <div><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+      </div>
+      <div class="two">
+        <div><label for="f-service">You need help with</label>
+        <select id="f-service" name="service"><option>Billing and claims</option><option>Credentialing</option><option>Old unpaid claims</option><option>A new practice</option><option>Not sure yet</option></select></div>
+        <div><label for="f-source">You heard about us from</label>
+        <select id="f-source" name="source"><option>Google</option><option>An email from JCB</option><option>A colleague</option><option>Other</option></select></div>
+      </div>
+      <div><label for="f-msg">Anything we should know? <span class="hint">(optional)</span></label><textarea id="f-msg" name="msg" rows="2"></textarea></div>
+      <p class="hint">Please don't include patient information.</p>
+      <button class="btn btn-green" type="submit">Send and pick a time</button>
+      <span class="note">After sending, the clinic goes straight to Shannon's calendar. Try it.</span>
+    </form>
   </div>
 </section>
 

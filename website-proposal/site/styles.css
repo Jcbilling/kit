@@ -490,3 +490,17 @@ table.codes{min-width:560px}
 .chips li span{grid-column:1 / -1;color:var(--fg)}
 .chips li i{justify-self:end}
 .change .means b{display:inline;font-family:var(--body);font-size:inherit;margin:0}
+/* compact contact */
+.contacthead .wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.contacthead .wrap > *{min-width:0}
+.contacthead h1{max-width:18ch}
+.cinfo{display:grid;gap:6px;margin-top:10px;color:#DDE3EE;font-size:.95rem}
+.cinfo span{display:inline-block;min-width:64px;color:#9FB0CC;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+form.cf.compact{gap:10px;padding:22px;color:var(--fg)}
+form.cf.compact .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+form.cf.compact .two > div{min-width:0}
+form.cf.compact label{display:block;margin-bottom:4px;font-size:.8rem}
+form.cf.compact input,form.cf.compact select,form.cf.compact textarea{padding:8px 10px;font-size:.93rem}
+form.cf.compact .btn{justify-self:start;padding:10px 20px}
+@media (max-width:860px){.contacthead .wrap{grid-template-columns:1fr}}
+@media (max-width:460px){form.cf.compact .two{grid-template-columns:1fr}}
