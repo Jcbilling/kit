@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
-<link rel="stylesheet" href="styles.css?v=1791941151788">
+<link rel="stylesheet" href="styles.css?v=1791941635319">
 </head>
 <body>
 <div class="review" role="note">
@@ -53,7 +53,11 @@
     <form class="cf compact" id="cf" novalidate>
       <div class="two">
         <div><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name"></div>
-        <div><label for="f-clinic">Practice</label><input id="f-clinic" name="clinic"></div>
+        <div><label for="f-clinic">Clinic</label><input id="f-clinic" name="clinic"></div>
+      </div>
+      <div class="two">
+        <div><label for="f-role">Your role</label><input id="f-role" name="role" placeholder="Owner, manager…"></div>
+        <div><label for="f-providers">Providers at your clinic</label><select id="f-providers" name="providers"><option>1 to 5</option><option>6 to 15</option><option>16 to 30</option><option>More than 30</option></select></div>
       </div>
       <div class="two">
         <div><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
@@ -61,7 +65,7 @@
       </div>
       <div class="two">
         <div><label for="f-service">You need help with</label>
-        <select id="f-service" name="service"><option>Billing and claims</option><option>Credentialing</option><option>Old unpaid claims</option><option>A new practice</option><option>Not sure yet</option></select></div>
+        <select id="f-service" name="service"><option>Billing and claims</option><option>Credentialing</option><option>Old unpaid claims</option><option>A new clinic</option><option>Not sure yet</option></select></div>
         <div><label for="f-source">You heard about us from</label>
         <select id="f-source" name="source"><option>Google</option><option>An email from JCB</option><option>A colleague</option><option>Other</option></select></div>
       </div>
