@@ -91,6 +91,57 @@
     <p class="copy">© 2026 JC Billing and Management Services LLC. All rights reserved. · Privacy policy</p>
   </div>
 </footer>
+<dialog class="bio" id="bio-jennita" aria-labelledby="bio-jennita-t">
+  <div class="bio-in">
+    <button type="button" class="bio-x" aria-label="Close">×</button>
+    <div class="ph-img"><b>Photo</b>Jennita Coles</div>
+    <div class="stack">
+      <span class="eyebrow">Founder & CEO</span>
+      <h2 id="bio-jennita-t">Jennita Coles</h2>
+      <dl class="bio-q">
+        <dt>Who I am</dt><dd>A few lines in Jennita's own words: where they're from and how they got into healthcare billing.</dd>
+        <dt>What I love most about working at JCB</dt><dd>In Jennita's words.</dd>
+        <dt>Outside of work</dt><dd>Hobbies, family, what they enjoy on a weekend.</dd>
+        <dt>Something clinics don't know about me</dt><dd>A personal detail they'd like to share.</dd>
+      </dl>
+      <span class="note"><b>Needed from JCB:</b> Jennita's own answers to these four questions, and a real photo.</span>
+    </div>
+  </div>
+</dialog>
+<dialog class="bio" id="bio-shannon" aria-labelledby="bio-shannon-t">
+  <div class="bio-in">
+    <button type="button" class="bio-x" aria-label="Close">×</button>
+    <div class="ph-img"><b>Photo</b>Shannon Long</div>
+    <div class="stack">
+      <span class="eyebrow">Chief Operating Officer</span>
+      <h2 id="bio-shannon-t">Shannon Long</h2>
+      <dl class="bio-q">
+        <dt>Who I am</dt><dd>A few lines in Shannon's own words: where they're from and how they got into healthcare billing.</dd>
+        <dt>What I love most about working at JCB</dt><dd>In Shannon's words.</dd>
+        <dt>Outside of work</dt><dd>Hobbies, family, what they enjoy on a weekend.</dd>
+        <dt>Something clinics don't know about me</dt><dd>A personal detail they'd like to share.</dd>
+      </dl>
+      <span class="note"><b>Needed from JCB:</b> Shannon's own answers to these four questions, and a real photo.</span>
+    </div>
+  </div>
+</dialog>
+<dialog class="bio" id="bio-lissy" aria-labelledby="bio-lissy-t">
+  <div class="bio-in">
+    <button type="button" class="bio-x" aria-label="Close">×</button>
+    <div class="ph-img"><b>Photo</b>Lissy Reyes</div>
+    <div class="stack">
+      <span class="eyebrow">Executive Vice President</span>
+      <h2 id="bio-lissy-t">Lissy Reyes</h2>
+      <dl class="bio-q">
+        <dt>Who I am</dt><dd>A few lines in Lissy's own words: where they're from and how they got into healthcare billing.</dd>
+        <dt>What I love most about working at JCB</dt><dd>In Lissy's words.</dd>
+        <dt>Outside of work</dt><dd>Hobbies, family, what they enjoy on a weekend.</dd>
+        <dt>Something clinics don't know about me</dt><dd>A personal detail they'd like to share.</dd>
+      </dl>
+      <span class="note"><b>Needed from JCB:</b> Lissy's own answers to these four questions, and a real photo.</span>
+    </div>
+  </div>
+</dialog>
 <script>
 (function(){
   var KEY='jcbPreviewNotes', b=document.getElementById('toggleNotes');
@@ -101,6 +152,8 @@
   document.querySelectorAll('details.drop').forEach(function(d){
     document.addEventListener('click',function(e){if(!d.contains(e.target))d.removeAttribute('open');});
   });
+  document.querySelectorAll('.pbtn').forEach(function(btn){btn.addEventListener('click',function(){var d=document.getElementById('bio-'+btn.dataset.bio);if(d&&d.showModal)d.showModal();});});
+  document.querySelectorAll('dialog.bio').forEach(function(d){d.querySelector('.bio-x').addEventListener('click',function(){d.close();});d.addEventListener('click',function(e){if(e.target===d)d.close();});});
   var f=document.getElementById('cf');
   if(f)f.addEventListener('submit',function(e){e.preventDefault();location.href='thank-you.html';});
 })();
