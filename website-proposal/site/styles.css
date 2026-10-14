@@ -506,3 +506,4 @@ form.cf.compact .btn{justify-self:start;padding:10px 20px}
 @media (max-width:460px){form.cf.compact .two{grid-template-columns:1fr}}
 form.cf label,form.cf .hint{color:var(--fg)}
 form.cf .hint{color:var(--muted)}
+@media (min-width:961px){.errgrid.four{grid-template-columns:1fr 1fr}}
